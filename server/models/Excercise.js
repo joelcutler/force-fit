@@ -12,20 +12,6 @@ const exerciseSchema = new Schema({
   equipment: {
     type: String
   },
-  sets: {
-    type: Number,
-    min: 0
-  },
-  reps: {
-    type: Number,
-    min: 0
-  },
-  duration: {
-    type: String
-  },
-  distance: {
-    type: String
-  },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
