@@ -1,5 +1,7 @@
 const db = require("./connection");
+
 const { User, Exercise, Category, Workout } = require("../models");
+
 
 db.once("open", async () => {
   // insert other model seeds here, above Users. not sure if order matters here -joel
@@ -13,7 +15,7 @@ db.once("open", async () => {
     password: "pwpwpw",
     workouts: [
       {
-        excercises: [exercises[0]._id, exercises[1]._id, exercises[2]._id],
+        exercises: [exercises[0]._id, exercises[1]._id, exercises[2]._id],
       },
     ],
   });
@@ -25,7 +27,7 @@ db.once("open", async () => {
     password: "pwpwpw",
     workouts: [
       {
-        excercises: [exercises[3]._id, exercises[4]._id, ecercises[5]._id],
+        exercises: [exercises[3]._id, exercises[4]._id, exercises[5]._id],
       },
     ],
   });
@@ -37,7 +39,7 @@ db.once("open", async () => {
     password: "pwpwpw",
     workouts: [
       {
-        excercises: [exercises[6]._id, exercises[7]._id, exercises[8]._id],
+        exercises: [exercises[6]._id, exercises[7]._id, exercises[8]._id],
       },
     ],
   });
@@ -49,7 +51,7 @@ db.once("open", async () => {
     password: "pwpwpw",
     workouts: [
       {
-        excercises: [exercises[9]._id, exercises[10]._id, exercises[11]._id],
+        exercises: [exercises[9]._id, exercises[10]._id, exercises[11]._id],
       },
     ],
   });
