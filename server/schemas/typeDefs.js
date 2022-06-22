@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String
   }
 
-  type Excercise {
+  type Exercise {
     _id: ID
     name: String
     equipment: String
@@ -43,7 +43,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(exercisess: [ID]!): Wokrout
+    addWorkout(exercises: [ID]!): Workout
     updateUser(
       firstName: String
       lastName: String
