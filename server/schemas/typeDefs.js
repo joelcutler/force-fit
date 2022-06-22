@@ -24,6 +24,11 @@ const typeDefs = gql`
   # workout type needs fixing
   type Workout {
     exercises: [Exercise]
+    duration: Number
+    distance: Number
+    weight: Number
+    sets: Number
+    reps: Number
     day: Date
   }
 
