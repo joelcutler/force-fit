@@ -7,6 +7,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
+
     exercises: async (parent, { category, name }) => {
       const params = {};
 
@@ -22,23 +23,35 @@ const resolvers = {
 
       return await Exercise.find(params).populate("category");
     },
+
     exercise: async (parent, { _id }) => {
-      return await Exercise.findById(_id).populate("category");
+      return await Exercise.findById(_id);
+      // .populate("category");
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "workouts.exercises",
-          populate: "category",
-        });
 
-        // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError("Not logged in");
+    user: async (parent, args) => {
+      return User.findOne(User.firstName);
     },
+
+    users: async () => {
+      return User.find();
+    },
+
+    // user: async (parent, args, context) => {
+    //   // if (context.user) {
+    //   if (user) {
+    //     const user = await User.findById(user._id).populate({
+    //       path: "workouts.exercises",
+    //       populate: "category",
+    //     });
+
+    //     // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+    //     return user;
+    //   }
+
+    //   throw new AuthenticationError("Not logged in");
+    // },
     workout: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
