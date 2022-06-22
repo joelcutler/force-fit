@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String
   }
 
-  type Excercise {
+  type Exercise {
     _id: ID
     name: String
     equipment: String
@@ -20,20 +20,29 @@ const typeDefs = gql`
     password: String
     Workouts: Workout
   }
+  type Auth {
+    token: ID
+    user: User
+  }
 
   # workout type needs fixing
   type Workout {
     exercises: [Exercise]
-    duration: Number
-    distance: Number
-    weight: Number
-    sets: Number
-    reps: Number
-    day: Date
+    duration: Int
+    distance: Int
+    weight: Int
+    sets: Int
+    reps: Int
+    day: String
   }
 
   type Query {
-
+    categories: [Category]
+    exercises(category: ID, name: String): [Exercise]
+    exercise(_id: ID!): Exercise
+    user: User
+    workout(_id: ID!): Workout
+    #checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
@@ -43,7 +52,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(exercisess: [ID]!): Wokrout
+    addWorkout(exercises: [ID]!): Workout
     updateUser(
       firstName: String
       lastName: String
