@@ -7,6 +7,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
+    //fix exercise query below
     exercises: async (parent, { category, name }) => {
       const params = {};
 
@@ -95,6 +96,7 @@ const resolvers = {
 
       return { token, user };
     },
+    //fix { exercises } part
     addWorkout: async (parent, { exercises }, context) => {
       console.log(context);
       if (context.user) {

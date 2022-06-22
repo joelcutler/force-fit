@@ -25,7 +25,6 @@ const typeDefs = gql`
     user: User
   }
 
-  # workout type needs fixing
   type Workout {
     exercises: [Exercise]
     duration: Int
