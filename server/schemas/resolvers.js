@@ -1,12 +1,8 @@
-const { User, Workout, Excercise, Category } = req
+const { User, Workout, exercise, Category } = req;
 
 const resolvers = {
-  Query: {
-
-  },
-  Mutation: {
-
-  }
-}
+  Query: {},
+  Mutation: {},
+};
 
 module.exports = resolvers;
