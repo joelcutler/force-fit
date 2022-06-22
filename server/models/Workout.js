@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const workoutSchema = new Schema({
   workout: [
     {
-      exercise: {
+      exercises: [
         type: Schema.Types.ObjectId,
         ref: 'Exercise',
         required: true
-      },
+      ],
       duration: {
         type: Number,
         required: 'Duration in minutes, enter you will.',
