@@ -1,4 +1,3 @@
-
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Workout, Exercise, Category } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -119,15 +118,15 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    updateExercise: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
+    // updateExercise: async (parent, { _id, quantity }) => {
+    //   const decrement = Math.abs(quantity) * -1;
 
-      return await Exercise.findByIdAndUpdate(
-        _id,
-        { $inc: { quantity: decrement } },
-        { new: true }
-      );
-    },
+    //   return await Exercise.findByIdAndUpdate(
+    //     _id,
+    //     { $inc: { quantity: decrement } },
+    //     { new: true }
+    //   );
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -147,6 +146,5 @@ const resolvers = {
     },
   },
 };
-
 
 module.exports = resolvers;
