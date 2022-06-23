@@ -29,8 +29,8 @@ const resolvers = {
       // .populate("category");
     },
 
-    user: async (parent, args) => {
-      return User.findOne(User.firstName);
+    user: async (parent, { firstName }) => {
+      return User.findOne({ firstName })
     },
 
     users: async () => {
