@@ -53,7 +53,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(exercises: Workout): Workout
+    addWorkout(exercises: String): Workout
     updateUser(
       firstName: String
       lastName: String

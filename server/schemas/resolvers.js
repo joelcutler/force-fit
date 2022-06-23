@@ -24,12 +24,12 @@ const resolvers = {
 
       return await Exercise.find(params).populate("category");
     },
-    //does not work
+    //works
     exercise: async (parent, { _id }) => {
       return await Exercise.findOne(_id);
       // .populate("category");
     },
-    //returns first user in the database, no matter what args are passed
+    //works
     user: async (parent, args) => {
       return User.findOne(User.firstName);
     },
@@ -111,7 +111,7 @@ const resolvers = {
       return { token, user };
     },
     //addWorkout: async (parent, { exercises }, context) => {
-    addWorkout: async (parent, { exercises }) => {
+    addWorkout: async (parent, { exercises }, context) => {
       //console.log(context);
       // if (context.user) {
         const workout = new Workout({ exercises });
