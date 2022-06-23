@@ -26,7 +26,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  Workouts: [Workout.schema],
+  workouts: [Workout.schema],
 });
 
 // set up pre-save middleware to create password

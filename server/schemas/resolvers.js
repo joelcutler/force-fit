@@ -4,10 +4,11 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    //works
     categories: async () => {
       return await Category.find();
     },
-    //fix exercise query below
+    //works
     exercises: async (parent, { category, name }) => {
       const params = {};
 
@@ -23,23 +24,35 @@ const resolvers = {
 
       return await Exercise.find(params).populate("category");
     },
+    //does not work
     exercise: async (parent, { _id }) => {
-      return await Exercise.findById(_id).populate("category");
+      return await Exercise.findOne(_id);
+      // .populate("category");
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "workouts.exercises",
-          populate: "category",
-        });
-
-        // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError("Not logged in");
+    //returns first user in the database, no matter what args are passed
+    user: async (parent, args) => {
+      return User.findOne(User.firstName);
     },
+    // works
+    users: async () => {
+      return User.find();
+    },
+
+    // user: async (parent, args, context) => {
+    //   // if (context.user) {
+    //   if (user) {
+    //     const user = await User.findById(user._id).populate({
+    //       path: "workouts.exercises",
+    //       populate: "category",
+    //     });
+
+    //     // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+    //     return user;
+    //   }
+
+    //   throw new AuthenticationError("Not logged in");
+    // },
     workout: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -90,16 +103,17 @@ const resolvers = {
     // },
   },
   Mutation: {
+    //works
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
-    //fix { exercises } part
-    addWorkout: async (parent, { exercises }, context) => {
-      console.log(context);
-      if (context.user) {
+    //addWorkout: async (parent, { exercises }, context) => {
+    addWorkout: async (parent, { exercises }) => {
+      //console.log(context);
+      // if (context.user) {
         const workout = new Workout({ exercises });
 
         await User.findByIdAndUpdate(context.user._id, {
@@ -107,7 +121,7 @@ const resolvers = {
         });
 
         return workout;
-      }
+      //}
 
       throw new AuthenticationError("Not logged in");
     },
@@ -129,6 +143,8 @@ const resolvers = {
     //     { new: true }
     //   );
     // },
+
+    //works
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

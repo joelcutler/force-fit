@@ -20,13 +20,14 @@ const typeDefs = gql`
     password: String
     Workouts: Workout
   }
+
   type Auth {
     token: ID
     user: User
   }
 
   type Workout {
-    exercises: [Exercise]
+    workout: [Exercise]
     duration: Int
     distance: Int
     weight: Int
@@ -38,8 +39,9 @@ const typeDefs = gql`
   type Query {
     categories: [Category]
     exercises(category: ID, name: String): [Exercise]
-    exercise(_id: ID!): Exercise
-    user: User
+    exercise(_id: ID): Exercise
+    users: [User]
+    user(firstName: String): User
     workout(_id: ID!): Workout
     #checkout(products: [ID]!): Checkout
   }
@@ -51,7 +53,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(exercises: [ID]!): Workout
+    addWorkout(exercises: Workout): Workout
     updateUser(
       firstName: String
       lastName: String
