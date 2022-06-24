@@ -35,7 +35,7 @@ const resolvers = {
     user: async (parent, { firstName }, context) => {
       const user = await User.findOne({ firstName }).populate("workouts");
       console.log("USER: " + user);
-      return user;
+      //return user;
     },
     // works
     users: async () => {
@@ -167,25 +167,25 @@ const resolvers = {
       console.log('UPDATED ' + updatedWorkout);
       return updatedWorkout;
     },
+    // deleteExerciseFromWorkout: async(parent, {workoutId, addedExerciseId}, context) => {
+    //   const updatedWorkout = await Workout.findByIdAndUpdate(
+    //     { _id: workoutId },
+    //     {
+    //       $pull: { workout: { addedExercise: addedExerciseId} },
+    //     },
+    //     { new: true }
+    //   );
+    //   return updatedWorkout;
+    // },
+    //have not tested
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
           new: true,
         });
       }
-
       throw new AuthenticationError("Not logged in");
     },
-    // updateExercise: async (parent, { _id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
-
-    //   return await Exercise.findByIdAndUpdate(
-    //     _id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
-
     //works
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
