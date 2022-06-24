@@ -30,7 +30,7 @@ const resolvers = {
     },
 
     user: async (parent, { firstName }) => {
-      return User.findOne({ firstName })
+      return User.findOne({ firstName });
     },
 
     users: async () => {
@@ -52,9 +52,15 @@ const resolvers = {
 
     //   throw new AuthenticationError("Not logged in");
     // },
-    workout: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+
+    workouts: async () => {
+      return await Workout.find();
+    },
+
+    // workout: async (parent, { _id }, context) => {
+    workout: async (parent, { _id }) => {
+      if (user) {
+        const user = await User.findById(user._id).populate({
           path: "workouts.exercise",
           populate: "category",
         });

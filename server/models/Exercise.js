@@ -12,6 +12,9 @@ const exerciseSchema = new Schema({
   equipment: {
     type: String,
   },
+  description: {
+    type: String,
+  },
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",

@@ -10,15 +10,17 @@ const typeDefs = gql`
     _id: ID
     name: String
     equipment: String
+    description: String
     category: Category
   }
 
   type User {
+    _id: ID
     firstName: String
     lastName: String
     email: String
     password: String
-    Workouts: Workout
+    workouts: Workout
   }
 
   type Auth {
@@ -28,7 +30,8 @@ const typeDefs = gql`
 
   # workout type needs fixing
   type Workout {
-    exercises: [Exercise]
+    _id: ID
+    workoutExercises: [Exercise]
     duration: Int
     distance: Int
     weight: Int
@@ -43,6 +46,7 @@ const typeDefs = gql`
     exercise(_id: ID): Exercise
     users: [User!]
     user(firstName: String): User
+    workouts: [Workout]
     workout(_id: ID!): Workout
     #checkout(products: [ID]!): Checkout
   }
