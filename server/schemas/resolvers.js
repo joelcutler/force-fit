@@ -1,13 +1,15 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Workout, Exercise, Category } = require("../models");
+const AddedExercise = require("../models/addedExercise");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    //works
     categories: async () => {
       return await Category.find();
     },
-
+    //works
     exercises: async (parent, { category, name }) => {
       const params = {};
 
@@ -23,18 +25,23 @@ const resolvers = {
 
       return await Exercise.find(params).populate("category");
     },
-
+    //works
     exercise: async (parent, { _id }) => {
-      return await Exercise.findById(_id);
+      return await Exercise.findOne(_id);
       // .populate("category");
     },
 
-    user: async (parent, { firstName }) => {
-      return User.findOne({ firstName })
+    //returns workouts in console, but not on front end
+    user: async (parent, { firstName }, context) => {
+      const user = await User.findOne({ firstName }).populate('workouts');
+      console.log('USER: ' + user);
+      return user;
     },
-
+    // works
     users: async () => {
-      return User.find();
+      const allUsers = await User.find();
+
+      return allUsers;
     },
 
     // user: async (parent, args, context) => {
@@ -52,15 +59,16 @@ const resolvers = {
 
     //   throw new AuthenticationError("Not logged in");
     // },
-    workout: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+
+    workout: async (parent, { userId, workoutId }, context) => {
+      // if (context.user) {
+        const user = await User.findById(userId).populate({
           path: "workouts.exercise",
           populate: "category",
         });
-
-        return user.workouts.id(_id);
-      }
+        console.log(user.workouts.id(workoutId));
+        return user.workouts.id(workoutId);
+      //}
 
       throw new AuthenticationError("Not logged in");
     },
@@ -102,25 +110,45 @@ const resolvers = {
     // },
   },
   Mutation: {
+    //works
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
-    addWorkout: async (parent, { exercises }, context) => {
-      console.log(context);
-      if (context.user) {
-        const workout = new Workout({ exercises });
-
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { workouts: workout },
-        });
-
-        return workout;
-      }
-
+    //works
+    addWorkout: async (parent, { userId, title }, context) => {
+      console.log(title);
+      // if (context.user) {
+        const workout = await Workout.create({ title });
+        console.log(workout);
+        const updatedUser = await User.findByIdAndUpdate(
+          {_id: userId}, 
+          {
+            $push: { workouts: workout },
+          },
+          { new: true }
+          );
+        console.log(updatedUser);
+        return updatedUser;
+      //}
       throw new AuthenticationError("Not logged in");
+    },
+    //updated workout returns null
+    addExerciseToWorkout: async (parent, { userId, workoutId, exercise, duration, distance, weight, sets, reps }, context) => {
+      const addedExercise = await AddedExercise.create({ exercise, duration, distance, weight, sets, reps} );
+      console.log(addedExercise);
+      const updatedWorkout = await Workout.findByIdAndUpdate(
+        {_id: workoutId},
+        { 
+          $push: {workout: addedExercise } 
+        },
+        { new: true}
+      );
+      console.log('UPDATED ' + updatedWorkout);
+
+      return updatedWorkout;
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
@@ -140,6 +168,8 @@ const resolvers = {
     //     { new: true }
     //   );
     // },
+
+    //works
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

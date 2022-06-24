@@ -13,12 +13,13 @@ const typeDefs = gql`
     category: Category
   }
 
-  type User {
-    firstName: String
-    lastName: String
-    email: String
-    password: String
-    Workouts: Workout
+  type addedExercise{
+    exercise: String
+    duration: Int
+    distance: Int
+    weight: Int
+    sets: Int
+    reps: Int
   }
 
   type Auth {
@@ -26,24 +27,29 @@ const typeDefs = gql`
     user: User
   }
 
-  # workout type needs fixing
   type Workout {
-    exercises: [Exercise]
-    duration: Int
-    distance: Int
-    weight: Int
-    sets: Int
-    reps: Int
+    title: String
+    _id: ID
+    workout: [addedExercise]
     day: String
+  }
+
+  type User {
+    _id: ID
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    workouts: [Workout]
   }
 
   type Query {
     categories: [Category]
     exercises(category: ID, name: String): [Exercise]
     exercise(_id: ID): Exercise
-    users: [User!]
+    users: [User]
     user(firstName: String): User
-    workout(_id: ID!): Workout
+    workout(userId: ID, workoutId: ID): Workout
     #checkout(products: [ID]!): Checkout
   }
 
@@ -54,15 +60,27 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(exercises: [ID]!): Workout
+    addWorkout(
+      userId: ID
+      title: String
+      ): User
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
-
     login(email: String!, password: String!): Auth
+    addExerciseToWorkout(
+      userId: ID
+      workoutId: ID
+      exercise: String
+      duration: Int
+      distance: Int
+      weight: Int
+      sets: Int
+      reps: Int
+      ): Workout
   }
 `;
 
