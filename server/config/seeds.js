@@ -115,7 +115,7 @@ db.once("open", async () => {
     // },
   ]);
   console.log("exercises seeded");
-  console.log(exercises[0], "exercise[0]");
+  //console.log(exercises[0], "exercise[0]");
 
   await Workout.deleteMany();
   const workouts = await Workout.insertMany([
@@ -134,6 +134,7 @@ db.once("open", async () => {
       // the above don't work
       workoutExercises: [exercises[0]],
       duration: 0,
+      title: "title",
       distance: 0,
       weight: 20,
       sets: 3,
@@ -145,8 +146,7 @@ db.once("open", async () => {
 
   await User.deleteMany();
   await User.create({
-    firstName: "Joel",
-    lastName: "Cutler",
+    userName: "JoelCutler",
     email: "joel@joel.com",
     password: "pwpwpw",
     // workouts: [
@@ -157,8 +157,7 @@ db.once("open", async () => {
   });
 
   await User.create({
-    firstName: "Jordan",
-    lastName: "Edginton",
+    userName: "JordanEdginton",
     email: "jordan@jordan.com",
     password: "pwpwpw",
     workouts: [
@@ -169,8 +168,7 @@ db.once("open", async () => {
   });
 
   await User.create({
-    firstName: "Rochelle",
-    lastName: "Davis",
+    userName: "RochelleDavis",
     email: "rochelle@rochelle.com",
     password: "pwpwpw",
     workouts: [
@@ -181,8 +179,7 @@ db.once("open", async () => {
   });
 
   await User.create({
-    firstName: "Logan",
-    lastName: "Parke",
+    userName: "LoganParke",
     email: "logan@logan.com",
     password: "pwpwpw",
     workouts: [
