@@ -10,10 +10,11 @@ const typeDefs = gql`
     _id: ID
     name: String
     equipment: String
+    description: String
     category: Category
   }
 
-  type addedExercise{
+  type addedExercise {
     exercise: String
     duration: Int
     distance: Int
@@ -61,10 +62,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    addWorkout(
-      userId: ID
-      title: String
-      ): User
+    addWorkout(userId: ID, title: String): User
     updateUser(
       firstName: String
       lastName: String
@@ -81,7 +79,7 @@ const typeDefs = gql`
       weight: Int
       sets: Int
       reps: Int
-      ): Workout
+    ): Workout
   }
 `;
 

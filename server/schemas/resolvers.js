@@ -33,8 +33,8 @@ const resolvers = {
 
     //returns workouts in console, but not on front end
     user: async (parent, { firstName }, context) => {
-      const user = await User.findOne({ firstName }).populate('workouts');
-      console.log('USER: ' + user);
+      const user = await User.findOne({ firstName }).populate("workouts");
+      console.log("USER: " + user);
       return user;
     },
     // works
@@ -62,12 +62,12 @@ const resolvers = {
 
     workout: async (parent, { userId, workoutId }, context) => {
       // if (context.user) {
-        const user = await User.findById(userId).populate({
-          path: "workouts.exercise",
-          populate: "category",
-        });
-        console.log(user.workouts.id(workoutId));
-        return user.workouts.id(workoutId);
+      const user = await User.findById(userId).populate({
+        path: "workouts.exercise",
+        populate: "category",
+      });
+      console.log(user.workouts.id(workoutId));
+      return user.workouts.id(workoutId);
       //}
 
       throw new AuthenticationError("Not logged in");
@@ -121,30 +121,48 @@ const resolvers = {
     addWorkout: async (parent, { userId, title }, context) => {
       console.log(title);
       // if (context.user) {
-        const workout = await Workout.create({ title });
-        console.log(workout);
-        const updatedUser = await User.findByIdAndUpdate(
-          {_id: userId}, 
-          {
-            $push: { workouts: workout },
-          },
-          { new: true }
-          );
-        console.log(updatedUser);
-        return updatedUser;
+      const workout = await Workout.create({ title });
+      console.log(workout);
+      const updatedUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        {
+          $push: { workouts: workout },
+        },
+        { new: true }
+      );
+      console.log(updatedUser);
+      return updatedUser;
       //}
       throw new AuthenticationError("Not logged in");
     },
     //updated workout returns null
-    addExerciseToWorkout: async (parent, { userId, workoutId, exercise, duration, distance, weight, sets, reps }, context) => {
-      const addedExercise = await AddedExercise.create({ exercise, duration, distance, weight, sets, reps} );
+    addExerciseToWorkout: async (
+      parent,
+      { userId, workoutId, exercise, duration, distance, weight, sets, reps },
+      context
+    ) => {
+      const addedExercise = await AddedExercise.create({
+        exercise,
+        duration,
+        distance,
+        weight,
+        sets,
+        reps,
+      });
       console.log(addedExercise);
-      const updatedWorkout = await Workout.findByIdAndUpdate(
-        {_id: workoutId},
-        { 
-          $push: {workout: addedExercise } 
+      const updatedUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        {
+          $push: { addedExercises: addedExercise },
         },
-        { new: true}
+        { new: true }
+      );
+      const updatedWorkout = await Workout.findByIdAndUpdate(
+        { _id: workoutId },
+        {
+          $push: { workout: addedExercise },
+        },
+        { new: true }
       );
       console.log('UPDATED ' + updatedWorkout);
       return updatedWorkout;
