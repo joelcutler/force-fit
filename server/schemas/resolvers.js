@@ -147,7 +147,6 @@ const resolvers = {
         { new: true}
       );
       console.log('UPDATED ' + updatedWorkout);
-
       return updatedWorkout;
     },
     updateUser: async (parent, args, context) => {
