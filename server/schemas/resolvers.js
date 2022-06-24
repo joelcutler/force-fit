@@ -150,6 +150,13 @@ const resolvers = {
         reps,
       });
       console.log(addedExercise);
+      const updatedUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        {
+          $push: { addedExercises: addedExercise },
+        },
+        { new: true }
+      );
       const updatedWorkout = await Workout.findByIdAndUpdate(
         { _id: workoutId },
         {
@@ -157,8 +164,7 @@ const resolvers = {
         },
         { new: true }
       );
-      console.log("UPDATED " + updatedWorkout);
-
+      console.log('UPDATED ' + updatedWorkout);
       return updatedWorkout;
     },
     updateUser: async (parent, args, context) => {
