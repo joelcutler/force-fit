@@ -42,6 +42,7 @@ const typeDefs = gql`
     email: String
     password: String
     workouts: [Workout]
+    addedExercises: [addedExercise]
   }
 
   type Query {
