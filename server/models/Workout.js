@@ -5,8 +5,7 @@ const addedExercise = require("./addedExercise");
 const workoutSchema = new Schema(
   {
     title: {
-      type: String,
-      required: true,
+      type: String
     },
     workout: [addedExercise.schema],
     day: {
