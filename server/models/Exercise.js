@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
 const exerciseSchema = new Schema({
-  name: {
+  exerciseName: {
     type: String,
-    required: true,
+    // required: true,
     trim: true,
-    unique: true,
+    // unique: true,
   },
   equipment: {
     type: String,
@@ -18,7 +17,22 @@ const exerciseSchema = new Schema({
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: true,
+    // required: true,
+  },
+  duration: {
+    type: Number,
+  },
+  distance: {
+    type: Number,
+  },
+  weight: {
+    type: Number,
+  },
+  sets: {
+    type: Number,
+  },
+  reps: {
+    type: Number,
   },
 });
 

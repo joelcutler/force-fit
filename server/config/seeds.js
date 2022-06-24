@@ -1,6 +1,7 @@
 const db = require("./connection");
 
 const { User, Exercise, Category, Workout } = require("../models");
+const AddedExercise = require("../models/addedExercise");
 
 db.once("open", async () => {
   // insert other model seeds here, above Users. not sure if order matters here -joel
@@ -20,9 +21,9 @@ db.once("open", async () => {
   const exercises = await Exercise.insertMany([
     {
       name: "Bicep Curl",
-      category: categories[0]._id,
       equipment: "Dumbell",
       description: "Do a Bicep Curl.",
+      category: categories[0]._id,
       //image: 'cookie-tin.jpg',
     },
     // {
@@ -119,26 +120,9 @@ db.once("open", async () => {
 
   await Workout.deleteMany();
   const workouts = await Workout.insertMany([
-    // {
-    //   workoutExercises: [
     {
-      // the following don't work
-      // workoutExercises: [exercises[0]],
-      // workoutExercises: [exercises[0]._id],
-      // workoutExercises: exercises[0]._id,
-      // workoutExercises: exercises[0],
-      // workoutExercises: exercises,
-      // workoutExercises: [{exercises[0]}],
-      // workoutExercises: {exercises[0]},
-      // workoutExercises: { exercises },
-      // the above don't work
-      workoutExercises: [exercises[0]],
-      duration: 0,
       title: "title",
-      distance: 0,
-      weight: 20,
-      sets: 3,
-      reps: 10,
+      workout: [exercises[0]._id],
       day: new Date(),
     },
   ]);
