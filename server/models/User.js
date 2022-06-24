@@ -6,12 +6,7 @@ const Workout = require("./Workout");
 const addedExercise = require("./addedExercise");
 
 const userSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  lastName: {
+  userName: {
     type: String,
     required: true,
     trim: true,
