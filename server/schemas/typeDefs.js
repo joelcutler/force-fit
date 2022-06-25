@@ -64,6 +64,7 @@ const typeDefs = gql`
       sets: Int
       reps: Int
     ): Workout
+    deleteExerciseFromWorkout(workoutId: ID, exerciseId: ID): Workout
   }
 `;
 
