@@ -29,7 +29,7 @@ const typeDefs = gql`
   }
 
   type Workout {
-    #title: String
+    title: String
     _id: ID
     workout: [addedExercise]
     day: String

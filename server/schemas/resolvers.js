@@ -33,9 +33,7 @@ const resolvers = {
 
     //returns workouts in console, but not on front end
     user: async (parent, { userName }, context) => {
-      const user = await User.findOne({ userName }).populate("workouts");
-      console.log("USER: " + user);
-      //return user;
+      return User.findOne({ userName }).populate("workouts");
     },
     // works
     users: async () => {
