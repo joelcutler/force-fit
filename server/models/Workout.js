@@ -1,17 +1,19 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const addedExercise = require("./addedExercise");
+const Exercise = require("./Exercise");
 
 const workoutSchema = new Schema(
   {
-    title: {
-      type: String
+    workoutTitle: {
+      type: String,
     },
-    workout: [addedExercise.schema],
+
+    exercises: [Exercise.schema],
+
     day: {
       type: Date,
       default: Date.now,
-    },
+    }
   },
   {
     toJSON: {
