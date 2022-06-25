@@ -196,6 +196,7 @@ const resolvers = {
       console.log("UPDATED WORKOUT: " + updatedWorkout);
       return updatedWorkout;
     },
+    
     //have not tested
     updateUser: async (parent, args, context) => {
       if (context.user) {
@@ -218,9 +219,7 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
   },
