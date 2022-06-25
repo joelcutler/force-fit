@@ -1,10 +1,11 @@
 import React from "react";
 // import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//import Header from "./components/Header";
-//import Workouts from "./components/Workouts";
+import { Routes, Route } from "react-router-dom";
 
-import LoginSignup from './pages/login';
+import LoginSignup from "./pages/login";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+
 // const client = new ApolloClient({
 //   uri: "/graphql",
 //   cache: new InMemoryCache(),
@@ -12,20 +13,15 @@ import LoginSignup from './pages/login';
 
 function App() {
   return (
-    // <ApolloProvider client={client}>  
-<>
-        <nav>
-          {/* <Header></Header> */}
-        </nav> 
-        
-          <Routes>
-          <Route path="/" element={<LoginSignup />}></Route>
-          </Routes>
+    // <ApolloProvider client={client}>
 
-        <main>
-          {/* <Workouts></Workouts> */}
-        </main>
-</>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginSignup />} />
+      </Routes>
+    </div>
 
     // </ApolloProvider>
   );
