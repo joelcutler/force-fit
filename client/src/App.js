@@ -17,11 +17,10 @@ function App() {
         <nav>
           {/* <Header></Header> */}
         </nav> 
-        
           <Routes>
-          <Route path="/" element={<LoginSignup />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route path="/login" element={<LoginSignup />}></Route>
           </Routes>
-
         <main>
           {/* <Workouts></Workouts> */}
         </main>
