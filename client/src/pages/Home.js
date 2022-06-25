@@ -7,11 +7,9 @@ import Exercises from "../components/Exercises";
 const Home = () => {
   return (
     <div>
-      <main>
-        <Workouts />
-        <Today />
-        <Exercises />
-      </main>
+      <Workouts />
+      <Today />
+      <Exercises />
     </div>
   );
 };
