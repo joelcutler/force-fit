@@ -146,6 +146,9 @@ const resolvers = {
         userId,
         workoutId,
         exerciseName,
+        equipment,
+        description,
+        category,
         duration,
         distance,
         weight,
@@ -154,31 +157,43 @@ const resolvers = {
       },
       context
     ) => {
-      const Exercise = await Exercise.create({
+      const exercise = await Exercise.create({
         exerciseName,
+        equipment,
+        description,
+        category,
         duration,
         distance,
         weight,
         sets,
         reps,
       });
-      console.log(Exercise);
+      console.log(exercise, "exercise");
       const updatedUser = await User.findByIdAndUpdate(
-        { _id: userId },
+        { _id: userId, "workouts._id": workoutId },
+        // {
+        //   workouts: {
+        //     $elemMatch: {
+        //       _id: workoutId,
+        //     },
+        //   },
+        // },
         {
-          $push: { Exercises: Exercise },
+          $push: { workouts: { exercises: exercise } },
         },
         { new: true }
       );
-      const updatedWorkout = await Workout.findByIdAndUpdate(
-        { _id: workoutId },
-        {
-          $push: { workout: Exercise },
-        },
-        { new: true }
-      );
-      console.log("UPDATED " + updatedWorkout);
-      return updatedWorkout;
+      console.log(updatedUser, "updated user");
+      // const updatedWorkout = await Workout.findByIdAndUpdate(
+      //   { _id: workoutId },
+      //   {
+      //     $push: { workouts: {exercises: exercise} },
+      //   },
+      //   { new: true }
+      // );
+      // console.log(updatedUser, "updated user");
+      // console.log("UPDATED " + updatedWorkout);
+      return updatedUser;
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
