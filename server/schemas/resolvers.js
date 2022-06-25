@@ -186,16 +186,16 @@ const resolvers = {
       console.log("UPDATED " + updatedWorkout);
       return updatedWorkout;
     },
-    // deleteExerciseFromWorkout: async(parent, {workoutId, addedExerciseId}, context) => {
-    //   const updatedWorkout = await Workout.findByIdAndUpdate(
-    //     { _id: workoutId },
-    //     {
-    //       $pull: { workout: { addedExercise: addedExerciseId} },
-    //     },
-    //     { new: true }
-    //   );
-    //   return updatedWorkout;
-    // },
+    deleteExerciseFromWorkout: async(parent, {workoutId, exerciseId}, context) => {
+      console.log("exercise ID: " + exerciseId);
+      const updatedWorkout = await Workout.findByIdAndUpdate(
+        { _id: workoutId },
+        { $pull: {exercises: { _id: exerciseId }}},
+        { new: true }
+      );
+      console.log("UPDATED WORKOUT: " + updatedWorkout);
+      return updatedWorkout;
+    },
     //have not tested
     updateUser: async (parent, args, context) => {
       if (context.user) {
