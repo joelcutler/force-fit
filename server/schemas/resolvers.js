@@ -196,6 +196,15 @@ const resolvers = {
       console.log("UPDATED WORKOUT: " + updatedWorkout);
       return updatedWorkout;
     },
+    deleteWorkoutFromUser: async(parent, {userId, workoutId}, context) => {
+      const updatedUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $pull: {workouts: workoutId }},
+        { new: true }
+      );
+      console.log("UPDATED USER: " + updatedUser);
+      return updatedUser;
+    },
     //have not tested
     updateUser: async (parent, args, context) => {
       if (context.user) {
