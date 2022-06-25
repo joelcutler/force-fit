@@ -3,19 +3,15 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type Category {
     _id: ID
-    name: String
+    categoryName: String
   }
 
   type Exercise {
     _id: ID
-    name: String
+    exerciseName: String
     equipment: String
     description: String
     category: Category
-  }
-
-  type addedExercise {
-    exercise: String
     duration: Int
     distance: Int
     weight: Int
@@ -29,9 +25,9 @@ const typeDefs = gql`
   }
 
   type Workout {
-    title: String
     _id: ID
-    workout: [addedExercise]
+    workoutTitle: String
+    exercises: [Exercise]
     day: String
   }
 
@@ -41,36 +37,27 @@ const typeDefs = gql`
     email: String
     password: String
     workouts: [Workout]
-    addedExercises: [addedExercise]
+    exercises: [Exercise]
   }
 
   type Query {
     categories: [Category]
-    exercises(category: ID, name: String): [Exercise]
+    exercises(category: ID, exerciseName: String): [Exercise]
     exercise(_id: ID): Exercise
     users: [User]
     user(userName: String): User
     workout(userId: ID, workoutId: ID): Workout
-    #checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
-    addUser(
-      userName: String!
-      email: String!
-      password: String!
-    ): Auth
-    addWorkout(userId: ID, title: String): User
-    updateUser(
-      userName: String
-      email: String
-      password: String
-    ): User
+    addUser(userName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    updateUser(userName: String, email: String, password: String): User
+    addWorkout(userId: ID, workoutTitle: String): User
     addExerciseToWorkout(
       userId: ID
       workoutId: ID
-      exercise: String
+      exerciseName: String
       duration: Int
       distance: Int
       weight: Int
