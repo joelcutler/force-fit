@@ -74,6 +74,4 @@ const typeDefs = gql`
   }
 `;
 
-// line 38 updateExercise(_id: ID!, quantity: Int!): Exercise
-
 module.exports = typeDefs;
