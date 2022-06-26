@@ -60,7 +60,7 @@ const resolvers = {
     workout: async (parent, { userId, workoutId }, context) => {
       // if (context.user) {
       //const user = await User.findById(userId).populate('workouts');
-      const workout = await Workout.findById(workoutId).populate('exercises');
+      const workout = await Workout.findById(workoutId).populate("exercises");
       console.log(workout);
       return workout;
       //}
@@ -117,9 +117,7 @@ const resolvers = {
       console.log(workoutTitle, "workout title");
       // if (context.user) {
       try {
-        const workout = await Workout.create(
-          { workoutTitle }
-        );
+        const workout = await Workout.create({ workoutTitle });
         console.log(workout, "workout!!");
 
         const updatedUser = await User.findByIdAndUpdate(
@@ -129,7 +127,7 @@ const resolvers = {
           },
           { new: true }
         );
-        console.log(updatedUser);
+        console.log(updatedUser, "updatedUser!@#");
         return updatedUser;
       } catch (e) {
         console.log(e);
@@ -170,7 +168,7 @@ const resolvers = {
       const updatedUser = await User.findByIdAndUpdate(
         { _id: userId },
         {
-          $push: { exercises: exercise }
+          $push: { exercises: exercise },
         },
         { new: true }
       );
@@ -186,20 +184,24 @@ const resolvers = {
       console.log("UPDATED " + updatedWorkout);
       return updatedWorkout;
     },
-    deleteExerciseFromWorkout: async(parent, {workoutId, exerciseId}, context) => {
+    deleteExerciseFromWorkout: async (
+      parent,
+      { workoutId, exerciseId },
+      context
+    ) => {
       console.log("exercise ID: " + exerciseId);
       const updatedWorkout = await Workout.findByIdAndUpdate(
         { _id: workoutId },
-        { $pull: {exercises: { _id: exerciseId }}},
+        { $pull: { exercises: { _id: exerciseId } } },
         { new: true }
       );
       console.log("UPDATED WORKOUT: " + updatedWorkout);
       return updatedWorkout;
     },
-    deleteWorkoutFromUser: async(parent, {userId, workoutId}, context) => {
+    deleteWorkoutFromUser: async (parent, { userId, workoutId }, context) => {
       const updatedUser = await User.findByIdAndUpdate(
         { _id: userId },
-        { $pull: {workouts: workoutId }},
+        { $pull: { workouts: workoutId } },
         { new: true }
       );
       console.log("UPDATED USER: " + updatedUser);
@@ -208,9 +210,9 @@ const resolvers = {
     //have not tested
     updateUser: async (parent, args, context) => {
       //if (context.user) {
-        return await User.findByIdAndUpdate(args.userId, args, {
-          new: true,
-        });
+      return await User.findByIdAndUpdate(args.userId, args, {
+        new: true,
+      });
       //}
       //throw new AuthenticationError("Not logged in")
     },
