@@ -207,12 +207,12 @@ const resolvers = {
     },
     //have not tested
     updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
+      //if (context.user) {
+        return await User.findByIdAndUpdate(args.userId, args, {
           new: true,
         });
-      }
-      throw new AuthenticationError("Not logged in");
+      //}
+      //throw new AuthenticationError("Not logged in")
     },
     //works
     login: async (parent, { email, password }) => {

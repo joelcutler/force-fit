@@ -1,32 +1,33 @@
 import React from "react";
-// import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//import Header from "./components/Header";
-//import Workouts from "./components/Workouts";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { Routes, Route } from "react-router-dom";
+import Auth from './utils/auth';
 
-import LoginSignup from './pages/login';
-// const client = new ApolloClient({
-//   uri: "/graphql",
-//   cache: new InMemoryCache(),
-// });
+import LoginSignup from "./pages/login";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    // <ApolloProvider client={client}>  
-<>
-        <nav>
-          {/* <Header></Header> */}
-        </nav> 
-          <Routes>
-          {/* <Route path="/" element={<Home />}></Route> */}
-          <Route path="/login" element={<LoginSignup />}></Route>
-          </Routes>
-        <main>
-          {/* <Workouts></Workouts> */}
-        </main>
-</>
+    <ApolloProvider client={client}>
 
-    // </ApolloProvider>
+    <div>
+      <Header />
+      <a href="/login" onClick={() => Auth.logout()} className="text-3xl bg-green-500">
+              Logout
+      </a>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginSignup />} />
+      </Routes>
+    </div>
+
+    </ApolloProvider>
   );
 }
 
