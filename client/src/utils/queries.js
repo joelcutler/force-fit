@@ -17,6 +17,22 @@ export const QUERY_WORKOUTS = gql`
   }
 `;
 
+export const QUERY_EXERCISES = gql`
+query workoutt($workoutTitle: String) {
+  workout(workoutTitle: $workout) {
+    workoutTitle
+    exercises {
+      exerciseName
+      equipment
+      description
+      category
+      weight
+      sets
+      reps
+    }
+  }
+}`
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {
