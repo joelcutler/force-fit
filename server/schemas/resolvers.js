@@ -30,7 +30,6 @@ const resolvers = {
       // .populate("category");
     },
 
-    //returns workouts in console, but not on front end
     user: async (parent, { userName }, context) => {
       return User.findOne({ userName }).populate("workouts");
     },
@@ -43,8 +42,8 @@ const resolvers = {
 
     // user: async (parent, args, context) => {
     //   // if (context.user) {
-    //   if (user) {
-    //     const user = await User.findById(user._id).populate({
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate({
     //       path: "workouts.exercises",
     //       populate: "category",
     //     });

@@ -4,7 +4,6 @@ import { LOGIN, ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function LoginSignup () {
-  
   //handles the animations of the Login/Signup Page line 8 - 32
   const [loginToggle, setloginToggle] = useState(false);
   const toggleElement = useRef();
@@ -86,29 +85,29 @@ function LoginSignup () {
         <div className='flex flex-wrap bg-opacity-0 m-auto mt-5 rounded-xl relative w-5/6 login-card'>
           <div className='w-1/2 p-5'>
             <h1 className='font-bold text-xl'>LOGIN</h1>
-            <div>
+            <div className='h-full'>
               <p className='w-full text-start'>Email</p>
-              <input type="text" placeholder="Enter Email" name="email" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300' id="email" onChange={handleLoginChange}/>
+              <input type="text" placeholder="Enter Email" name="email" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 shadow-md' id="email" onChange={handleLoginChange}/>
 
               <p className='w-full text-start'>Password</p>
-              <input type="password" placeholder="Enter Password" name="password" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300' id="pwd" onChange={handleLoginChange}/>
+              <input type="password" placeholder="Enter Password" name="password" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 shadow-md' id="pwd" onChange={handleLoginChange}/>
 
-              <button type="submit" className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4' onClick={handleLoginFormSubmit}>Login</button>
+              <button type="submit" className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4 w-full' onClick={handleLoginFormSubmit}>Login</button>
             </div>
           </div>
           <div className='w-1/2 p-5'>
             <h1 className='font-bold text-xl'>SIGNUP</h1>
             <div>
             <p className='w-full text-start'>Username</p>
-              <input type="text" placeholder="Enter Username" name="uname" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300' onChange={handleSignupChange}/>
+              <input type="text" placeholder="Enter Username" name="uname" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 shadow-md' onChange={handleSignupChange}/>
 
               <p className='w-full text-start'>Email</p>
-              <input type="text" placeholder="Enter Email" name="eml" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300' onChange={handleSignupChange}/>
+              <input type="text" placeholder="Enter Email" name="eml" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 shadow-md' onChange={handleSignupChange}/>
 
               <p className='w-full text-start'>Password</p>
-              <input type="password" placeholder="Enter Password" name="psw" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300' onChange={handleSignupChange}/>
+              <input type="password" placeholder="Enter Password" name="psw" className='w-full p-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 shadow-md' onChange={handleSignupChange}/>
 
-              <button type="submit" className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4' onClick={handleSignupFormSubmit}>Sign Up</button>
+              <button type="submit" className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4 w-full' onClick={handleSignupFormSubmit}>Sign Up</button>
             </div>
           </div>
           <div ref={toggleElement} className='toggleElement1 flex justify-around items-center bg-gray-700'>

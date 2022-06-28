@@ -64,7 +64,7 @@ code {
 
 /* LOGIN PAGE CSS line 61 - line 90*/
 .login-card{
-  background-color: wheat;
+  background-color: white;
 }
 
 .toggleElement1 {
@@ -73,7 +73,7 @@ code {
   width: 50%;
   height: 100%;
   border-radius: 15px;
-  background-color: red;
+  background-color: #4682B4;
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
 
@@ -84,7 +84,7 @@ code {
   width: 50%;
   height: 100%;
   border-radius: 15px;
-  background-color: red;
+  background-color: #4682B4;
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
 
