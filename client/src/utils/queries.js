@@ -18,7 +18,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_EXERCISES = gql`
-query workoutt($workoutTitle: String) {
+query workout($workoutTitle: String) {
   workout(workoutTitle: $workout) {
     workoutTitle
     exercises {
