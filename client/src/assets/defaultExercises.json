@@ -5,30 +5,23 @@
       "exerciseName": "bench press",
       "equipment": "Dumbbells",
       "description": "Lift the dumbbells to chest height with your palms facing forwards. Breathe out and push the dumbbells up until your arms are fully extended, using your pecs to power the movement.",
-      "category": "Chest",
-      "weight": 80,
-      "sets": 3,
-      "reps": 10
+      "categoryName": "Chest"
+      
     },
     {
       "_id": 2,
       "exerciseName": "sith curl",
       "equipment": "Dumbbells",
       "description": "Start standing with a dumbbell in each hand. Your elbows should rest at your sides and your forearms should extend out in front of your body,bring the dumbbells all the way up to your shoulders by bending your elbows, reverse the curl slowly and repeat. This exercise will prevent you from ever losing the high ground again.",
-      "category": "Arms",
-      "weight": 45,
-      "sets": 3,
-      "reps": 10
+      "categoryName": "Arms"
+      
     },
     {
       "_id": 3,
       "exerciseName": "jedi squat",
       "equipment": "Body Weight",
       "description": "Using the force stand with your hands on the back of your head and your feet shoulder-width apart with your feet turned out slightly to open the hip joint, lower your body until your thighs are parallel to the floor, pause and return to starting position and repeat.  ",
-      "category": "Arms",
-      "weight": 45,
-      "sets": 3,
-      "reps": 10
+      "categoryName": "Legs"
     }
   ]
 }
