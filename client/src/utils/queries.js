@@ -40,6 +40,19 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_WORKOUT = gql`
+  query workout ($userId: ID, $workoutId: ID) {
+  workout(userId: $userId, workoutId: $workoutId) {
+    workoutTitle
+    _id
+    exercises {
+      exerciseName
+      _id
+    } 
+  }
+}
+`;
+
 export const QUERY_EXERCISES = gql`
 query workout($workoutTitle: String) {
   workout(workoutTitle: $workout) {
