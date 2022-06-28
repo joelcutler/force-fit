@@ -48,7 +48,7 @@ const resolvers = {
           path: "workouts"
         });
 
-        // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        //user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
         return user;
       }
