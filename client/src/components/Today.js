@@ -5,13 +5,14 @@ import { QUERY_WORKOUT } from "../utils/queries";
 import { SET_WORKOUT } from "../utils/actions";
 
 const Today = () => {
-
   const [state, dispatch] = useStoreContext();
   console.log(state.workout);
 
-
   const { loading, data } = useQuery(QUERY_WORKOUT, {
-    variables: {userId:"62b655c348eb5e50f001132d", workoutId:"62b655cb48eb5e50f001132f"}
+    variables: {
+      userId: "62b655c348eb5e50f001132d",
+      workoutId: "62b655cb48eb5e50f001132f",
+    },
   });
 
   useEffect(() => {
@@ -26,15 +27,17 @@ const Today = () => {
   // console.log("DATA " + state.workout);
   return (
     <>
-    <div className="cards">
-    <h1>{state?.workout?.workoutTitle}</h1>
-      <div> helloo
-        {/* map below is broke
+      <div className="cards">
+        <h1 className="card-title">{state?.workout?.workoutTitle}</h1>
+        <div>
+          {" "}
+          helloo
+          {/* map below is broke
         {state.workout.map((exercise) => (
         <div>{exercise.workoutTitle}</div>
         ))} */}
+        </div>
       </div>
-    </div>
     </>
   );
 };
