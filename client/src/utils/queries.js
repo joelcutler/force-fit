@@ -32,6 +32,10 @@ export const QUERY_USER = gql`
         }
         day
       }
+      exercises {
+      exerciseName
+      _id
+    }
     }
   }
 `;
