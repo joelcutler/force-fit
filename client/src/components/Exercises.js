@@ -1,4 +1,3 @@
-
 // import React from "react";
 // import { useQuery, useMutation } from "@apollo/client";
 // import { QUERY_USER, QUERY_EXERCISES } from "../utils/queries";
@@ -37,12 +36,9 @@
 //     },
 //   ];
 
-
 //   const { data: userData, loading, error, refetch } = useQuery(QUERY_USER);
 //   const userDataLength = loading ? 0 : Object.keys(userData).length;
 //   //const [queryExercises] = useQuery(QUERY_EXERCISES);
-
-
 
 //   return (
 //       <div className="cards">
@@ -69,3 +65,4 @@
 
 
 // export default Exercises;
+
