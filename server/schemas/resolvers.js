@@ -30,10 +30,9 @@ const resolvers = {
       // .populate("category");
     },
 
-    //returns workouts in console, but not on front end
-    user: async (parent, { userName }, context) => {
-      return User.findOne({ userName }).populate("workouts");
-    },
+    // user: async (parent, { userName }, context) => {
+    //   return User.findOne({ userName }).populate("workouts");
+    // },
     // works
     users: async () => {
       const allUsers = await User.find();
@@ -41,21 +40,21 @@ const resolvers = {
       return allUsers;
     },
 
-    // user: async (parent, args, context) => {
-    //   // if (context.user) {
-    //   if (user) {
-    //     const user = await User.findById(user._id).populate({
-    //       path: "workouts.exercises",
-    //       populate: "category",
-    //     });
+    user: async (parent, args, context) => {
+      // if (context.user) {
+        console.log(context.user);
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "workouts"
+        });
 
-    //     // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        // user.workouts.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-    //     return user;
-    //   }
+        return user;
+      }
 
-    //   throw new AuthenticationError("Not logged in");
-    // },
+      throw new AuthenticationError("Not logged in");
+    },
 
     workout: async (parent, { userId, workoutId }, context) => {
       // if (context.user) {

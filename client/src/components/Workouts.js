@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { useQuery, useMutation } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
 // import { QUERY_USER } from "../utils/queries";
@@ -18,7 +18,7 @@ const Workouts = () => {
                 <h4>{workout.workoutTitle}</h4>
                 <p>{workout.day}</p>
                 {workout.exercises.map((exercise) => (
-                  <span key={exercise}>{exercise} </span>
+                  <span key={exercise.exerciseName}>{exercise.exerciseName} </span>
                 ))}
               </div>
             ))}

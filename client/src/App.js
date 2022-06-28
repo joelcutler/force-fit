@@ -1,7 +1,8 @@
 import React from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { Routes, Route } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { StoreProvider } from "./utils/GlobalState";
+import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
 
 
@@ -9,10 +10,28 @@ import LoginSignup from "./pages/login";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  uri: "/graphql",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+if(!Auth.loggedIn) {
+  console.log('notloggedin');
+}
 
 function App() {
   return (
@@ -20,9 +39,6 @@ function App() {
 <StoreProvider>
     <div>
       <Header />
-      <a href="/login" onClick={() => Auth.logout()} className="text-3xl bg-green-500">
-              Logout
-      </a>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginSignup />} />

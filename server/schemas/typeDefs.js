@@ -45,7 +45,8 @@ const typeDefs = gql`
     exercises(category: ID, exerciseName: String): [Exercise]
     exercise(_id: ID): Exercise
     users: [User]
-    user(userName: String): User
+    # user(userName: String): User
+    user: User
     workout(userId: ID, workoutId: ID): Workout
   }
 
