@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 //import Auth from "../utils/auth";
 import Workouts from "../components/Workouts";
 import Today from "../components/Today";
-import Exercises from "../components/Exercises";
+// import Exercises from "../components/Exercises";
 import { useStoreContext } from "../utils/GlobalState";
 import { SET_USER } from "../utils/actions";
 import { useQuery, useMutation } from "@apollo/client";
@@ -14,9 +14,10 @@ const Home = () => {
   const [state, dispatch] = useStoreContext();
 
   // TODO: this  import (below) is temporarily in this component, but it needs to be moved into the home page and triggered once a user logs in. username needs to be replaced w the logged in user's name
-  const { loading, data } = useQuery(QUERY_USER, {
-    variables: { userName: "jkjk" },
-  });
+  // const { loading, data } = useQuery(QUERY_USER, {
+  //   variables: { userName: "jkjk" },
+  // });
+  const { loading, data } = useQuery(QUERY_USER);
 
   // TODO: this useeEffect hook is temporarily in this component, but it needs to be moved into the home page and triggered once a user logs in.
   useEffect(() => {
@@ -33,7 +34,7 @@ const Home = () => {
     <div>
       <Workouts />
       <Today />
-      <Exercises />
+      {/* <Exercises /> */}
     </div>
   );
 };
