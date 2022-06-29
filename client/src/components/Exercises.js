@@ -7,6 +7,8 @@ import defaultExercises from "../assets/defaultExercises.json";
 import { parse } from "graphql";
 import defaultCategories from "../assets/defaultCategories.json";
 import Auth from '../utils/auth';
+import { SET_USER, SET_EXERCISE } from "../utils/actions";
+
 
 const Exercises = () => {
   // const { data: userData, loading, error, refetch } = useQuery(QUERY_USER);
@@ -14,13 +16,15 @@ const Exercises = () => {
   //const [queryExercises] = useQuery(QUERY_EXERCISES);
   let change = 0;
 
-  const [state] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
   let activeWorkout;
   if(state.workout){
     activeWorkout = state.workout._id;
     console.log(activeWorkout)
   }
   console.log(state);
+  
+  const { loading, data } = useQuery(QUERY_USER);
 
   const defExs = defaultExercises.defaultExercises;
 
@@ -37,6 +41,18 @@ const Exercises = () => {
       [name]: value,
     });
   };
+
+  console.log(data, "data")
+
+  useEffect(() => {
+    // console.log(data, "user data string at top of useEffect");
+    if (data) {
+      dispatch({
+        type: SET_USER,
+        user: data.user,
+      });
+    }
+  }, [data, loading, dispatch]);
   
 
   // THIS FUNCTION IS NOT WORKOING SOMEWHRE FRONT END OR BACKEND
@@ -54,7 +70,15 @@ const Exercises = () => {
           workoutId: exerciseFormState.workoutId
         },
       });
-      console.log(addedEx);
+      if(data){
+      dispatch({
+        type: SET_EXERCISE,
+        user: addedEx
+
+
+      })
+    }
+
     } catch (e){
       console.log(e);
     }
@@ -133,6 +157,7 @@ const Exercises = () => {
             </button> */}
             <button onClick={addExercise} className="bg-cyan-400">
               Add Exercise
+              setExerciseFormState([...exerciseFormState, {}])
             </button>
 
           </div>

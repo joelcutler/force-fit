@@ -1,5 +1,6 @@
 import { useReducer } from "react";
-import { SET_USER, SET_WORKOUT } from "./actions";
+import { SET_USER, SET_WORKOUT, SET_EXERCISE } from "./actions";
+
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -14,7 +15,16 @@ export const reducer = (state, action) => {
         return {
           ...state,
           workout: action.workout
-        }
+        };
+
+        case SET_EXERCISE:
+          console.log(action, "Action")
+          return{
+            
+            ...state,
+
+            user: {...state.user, workouts: [...state.user.workouts.filter(workout => workout._id !== action.exercise.workout._id), action.exercise.workout]}
+          }
     default:
       return state;
   }
