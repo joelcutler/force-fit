@@ -120,12 +120,12 @@ const resolvers = {
         console.log(workout, "workout!!");
 
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: userId },
+          { _id: context.user._id },
           {
             $push: { workouts: workout._id },
           },
           { new: true }
-        );
+        ).populate({ path: "workouts" });
         console.log(updatedUser, "updatedUser!@#");
         return updatedUser;
       } catch (e) {
@@ -138,12 +138,11 @@ const resolvers = {
     addExerciseToWorkout: async (
       parent,
       {
-        userId,
         workoutId,
         exerciseName,
-        equipment,
-        description,
-        category,
+        // equipment,
+        // description,
+        // category,
         duration,
         distance,
         weight,
@@ -165,7 +164,7 @@ const resolvers = {
       });
       console.log(exercise, "exercise");
       const updatedUser = await User.findByIdAndUpdate(
-        { _id: userId },
+        { _id: context.user._id },
         {
           $push: { exercises: exercise },
         },

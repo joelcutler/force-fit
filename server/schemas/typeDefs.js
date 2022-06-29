@@ -61,7 +61,6 @@ const typeDefs = gql`
     ): User
     addWorkout(userId: ID, workoutTitle: String): User
     addExerciseToWorkout(
-      userId: ID
       workoutId: ID
       exerciseName: String
       duration: Int
