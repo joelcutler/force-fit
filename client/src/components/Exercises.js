@@ -188,6 +188,7 @@ const Exercises = () => {
                 {/* <button>
               Complete
             </button> */}
+
                 <button
                   onClick={addExercise}
                   className="bg-cyan-400 rounded-xl w-1/2 "
@@ -197,6 +198,7 @@ const Exercises = () => {
                 {/* setExerciseFormState([...exerciseFormState, {}]) */}
               </div>
             </div>
+
           </div>
         </div>
       </div>

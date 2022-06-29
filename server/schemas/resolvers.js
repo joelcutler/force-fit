@@ -117,7 +117,7 @@ const resolvers = {
       // // if (context.user) {
       try {
         const workout = await Workout.create({ workoutTitle });
-        //console.log(workout, "workout!!");
+        console.log(workout, "workout!!");
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -127,7 +127,7 @@ const resolvers = {
           { new: true }
         ).populate({ path: "workouts" });
         //console.log(updatedUser, "updatedUser!@#");
-        return updatedUser;
+        return workout;
       } catch (e) {
         console.log(e);
       }

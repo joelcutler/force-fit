@@ -34,11 +34,17 @@ export const ADD_USER = gql`
 export const ADD_WORKOUT = gql`
   mutation addWorkout ($userId: ID, $workoutTitle: String) {
     addWorkout(userId: $userId, workoutTitle: $workoutTitle) {
-      email
-      workouts {
         workoutTitle
         _id
-      }
+        exercises {
+          _id
+          exerciseName
+          sets
+          reps
+          duration
+          distance
+          weight
+        }
     }
   }
 `;

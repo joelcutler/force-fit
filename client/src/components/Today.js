@@ -3,7 +3,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_WORKOUT } from "../utils/queries";
 import { ADD_WORKOUT } from "../utils/mutations";
-import { SET_WORKOUT } from "../utils/actions";
+import { NEW_WORKOUT, SET_WORKOUT } from "../utils/actions";
 
 const Today = () => {
   let change = 0;
@@ -31,9 +31,9 @@ const Today = () => {
       });
       //console.log("DATA " + data);
     }
-  }, [data, loading]);
-  //console.log(state?.workout);
 
+  }, [data, loading, dispatch]);
+ 
   const handleTitleChange = (event) => {
     const { name, value } = event.target;
     setTitleInput({
