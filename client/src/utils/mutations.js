@@ -30,3 +30,44 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_WORKOUT = gql`
+  mutation addWorkout ($userId: ID, $workoutTitle: String) {
+    addWorkout(userId: $userId, workoutTitle: $workoutTitle) {
+      email
+      workouts {
+        workoutTitle
+        _id
+      }
+    }
+  }
+`;
+
+export const ADD_EXERCISE = gql`
+  mutation addExerciseToWorkout( 
+      $workoutId: ID
+      $exerciseName: String
+      $duration: Int
+      $distance: Int
+      $weight: Int
+      $sets: Int
+      $reps: Int
+  ) {
+      addExerciseToWorkout(
+      workoutId: $workoutId
+      exerciseName: $exerciseName
+      duration: $duration
+      distance: $distance
+      weight: $weight
+      sets: $sets
+      reps: $reps
+      ) {
+          workoutTitle
+          exercises {
+            exerciseName
+            _id
+          }
+        }
+  }
+
+`;

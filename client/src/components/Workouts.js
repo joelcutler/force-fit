@@ -6,7 +6,7 @@ import { useStoreContext } from "../utils/GlobalState";
 
 const Workouts = () => {
   const [state] = useStoreContext();
-
+  // console.log(state.user);
   return (
     <>
       <div className="cards">

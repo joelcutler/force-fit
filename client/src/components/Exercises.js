@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_EXERCISES } from "../utils/queries";
+import { ADD_EXERCISE } from "../utils/mutations";
 import { useStoreContext } from "../utils/GlobalState";
 import defaultExercises from "../assets/defaultExercises.json";
 import { parse } from "graphql";
@@ -10,13 +11,52 @@ const Exercises = () => {
   // const { data: userData, loading, error, refetch } = useQuery(QUERY_USER);
   // const userDataLength = loading ? 0 : Object.keys(userData).length;
   //const [queryExercises] = useQuery(QUERY_EXERCISES);
+  let change = 0;
 
   const [state] = useStoreContext();
-  //   console.log(state.user);
+  let activeWorkout;
+  if(state.workout){
+    activeWorkout = state.workout._id;
+    console.log(activeWorkout)
+  }
 
   const defExs = defaultExercises.defaultExercises;
 
   const defCats = defaultCategories.defaultCategories;
+
+  const addExerciseToWorkout = useMutation(ADD_EXERCISE);
+
+  const [exerciseFormState, setExerciseFormState] = useState({exerciseName:'', distance:'',duration: '',weight:'', sets:'', reps:'', workoutId: activeWorkout || ''})
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+    setExerciseFormState({
+      ...exerciseFormState,
+      [name]: value,
+    });
+  };
+
+
+  // THIS FUNCTION IS NOT WORKOING SOMEWHRE FRONT END OR BACKEND
+  const addExercise = async (event) => {
+    
+    try {
+      const addedEx = await addExerciseToWorkout({
+        variables: {
+          exerciseName: exerciseFormState.exerciseName,
+          distance: exerciseFormState.distance,
+          duration: exerciseFormState.duration,
+          weight: exerciseFormState.weight,
+          sets: exerciseFormState.sets,
+          reps: exerciseFormState.reps,
+          workoutId: exerciseFormState.workoutId
+        },
+      });
+      console.log(addedEx);
+    } catch (e){
+      console.log(e);
+    }
+  };
 
   return (
     <div className="cards">
@@ -46,59 +86,54 @@ const Exercises = () => {
     <div className="ui container exercise">
       <div className="ui raised card m-auto">
         <h2>Add Your Exercise</h2>
-        <form action="POST">
+        <div>
           <div className="workout-type">
             <label>Exercise Type:</label>
-            <select name="type" id="type" defaultValue="Select Exercise Type">
-            {/* <option disabled selected>Select Exercise Type</option> */}
+            {/* <select name="type" id="type" defaultValue="Select Exercise Type">
             {defCats.map((categories) => (<option  key={categories._id} value={categories.categoryName}>{categories.categoryName}</option>))}
-            </select>
+            </select> */}
           </div>
           <div className="cardio-form">
             <div className="cardio-name">
               <label>Name:</label>
-              <input type="text" name="cardio-name" id="cardio-name" placeholder="Running" />
+              <input onChange={handleFormChange} type="text" name="exerciseName" id="cardio-name" placeholder="Running" />
             </div>
             <div className="distance">
               <label>Distance (miles):</label>
-              <input type="number" name="distance" id="distance" placeholder="5" />
+              <input onChange={handleFormChange} type="number" name="distance" id="distance" placeholder="5" />
             </div>
             <div className="duration">
               <label>Duration (minutes):</label>
-              <input type="number" name="duration" id="duration" placeholder="10" />
+              <input onChange={handleFormChange} type="number" name="duration" id="duration" placeholder="10" />
             </div>
           </div>
           <div className="resistance-form">
-            <div className="exercise">
-              <label>Exercise Name:</label>
-              <input type="text" name="name" id="name" placeholder="Bench Press" />
-            </div>
             <div className="weight">
               <label>Weight (lbs):</label>
-              <input type="number" name="weight" id="weight" placeholder="200" />
+              <input onChange={handleFormChange} type="number" name="weight" id="weight" placeholder="200" />
             </div>
             <div className="sets">
               <label>Sets:</label>
-              <input type="number" name="sets" id="sets" placeholder="4" />
+              <input onChange={handleFormChange} type="number" name="sets" id="sets" placeholder="4" />
             </div>
             <div className="reps">
               <label>Reps:</label>
-              <input type="number" name="reps" id="reps" placeholder="10" />
+              <input onChange={handleFormChange} type="number" name="reps" id="reps" placeholder="10" />
             </div>
-            <div className="resistance-duration">
+            {/* <div className="resistance-duration">
               <label>Duration (minutes):</label>
-              <input type="number" name="resistance-duration" id="resistance-duration" placeholder="10" />
-            </div>
+              <input onChange={handleFormChange} type="number" name="resistance-duration" id="resistance-duration" placeholder="10" />
+            </div> */}
           </div>
           <div className="buttons">
-            <button>
+            {/* <button>
               Complete
-            </button>
-            <button>
+            </button> */}
+            <button onClick={() => addExercise()} className="bg-cyan-400">
               Add Exercise
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
