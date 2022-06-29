@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 // import { useQuery, useMutation } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
+import { formatDate } from "../utils/helpers";
 // import { QUERY_USER } from "../utils/queries";
 // import { SET_USER } from "../utils/actions";
 
@@ -16,7 +17,7 @@ const Workouts = () => {
             {state.user.workouts.map((workout) => (
               <div key={workout._id}>
                 <p>{workout.workoutTitle}</p>
-                <span>Date: {workout.day}</span>
+                <span>Date: {formatDate(workout.day)}</span>
                 <details>
                   <summary>Workout Details</summary>
                   {workout.exercises.map((exercise) => (

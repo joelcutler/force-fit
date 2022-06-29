@@ -13,7 +13,7 @@ const workoutSchema = new Schema(
     day: {
       type: Date,
       default: Date.now,
-    }
+    },
   },
   {
     toJSON: {
