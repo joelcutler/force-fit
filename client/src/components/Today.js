@@ -12,8 +12,11 @@ const Today = () => {
   const newWorkTitle = useRef();
   const [titleInput, setTitleInput] = useState({workoutTitleInput: ''});
 
+  // if(!state.user){
+  //   return (<div>loading</div>)
+  // }
   const { loading, data } = useQuery(QUERY_WORKOUT, {
-    variables: {userId:"62b655c348eb5e50f001132d", workoutId:"62b655cb48eb5e50f001132f"}
+    variables: {userId:"62b655c348eb5e50f001132d", workoutId: state.user?.workouts[0]?._id || ''}
   });
 
 
@@ -64,7 +67,7 @@ const Today = () => {
       <button onClick={() => addNewWorkout()} className="w-2/6 bg-cyan-400 rounded-xl">Create Workout</button>
     </div>
       <div>
-        {state.workout && (
+        {state?.user?.workouts.length > 0 && (
         <div>
           <div>{state.user.workouts[0].workoutTitle}</div>
           {state.user.workouts[0].exercises.map((exercise) => (

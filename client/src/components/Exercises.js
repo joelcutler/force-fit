@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_EXERCISES } from "../utils/queries";
 import { ADD_EXERCISE } from "../utils/mutations";
@@ -19,14 +19,15 @@ const Exercises = () => {
     activeWorkout = state.workout._id;
     console.log(activeWorkout)
   }
+  console.log(state);
 
   const defExs = defaultExercises.defaultExercises;
 
   const defCats = defaultCategories.defaultCategories;
 
-  const addExerciseToWorkout = useMutation(ADD_EXERCISE);
+  const [addExerciseToWorkout] = useMutation(ADD_EXERCISE);
 
-  const [exerciseFormState, setExerciseFormState] = useState({exerciseName:'', distance:'',duration: '',weight:'', sets:'', reps:'', workoutId: activeWorkout || ''})
+  const [exerciseFormState, setExerciseFormState] = useState({workoutId: activeWorkout || ''})
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -35,20 +36,20 @@ const Exercises = () => {
       [name]: value,
     });
   };
-
+  
 
   // THIS FUNCTION IS NOT WORKOING SOMEWHRE FRONT END OR BACKEND
   const addExercise = async (event) => {
-    
+    event.preventDefault();
     try {
       const addedEx = await addExerciseToWorkout({
         variables: {
           exerciseName: exerciseFormState.exerciseName,
-          distance: exerciseFormState.distance,
-          duration: exerciseFormState.duration,
-          weight: exerciseFormState.weight,
-          sets: exerciseFormState.sets,
-          reps: exerciseFormState.reps,
+          distance: parseInt(exerciseFormState.distance),
+          duration: parseInt(exerciseFormState.duration),
+          weight: parseInt(exerciseFormState.weight),
+          sets: parseInt(exerciseFormState.sets),
+          reps: parseInt(exerciseFormState.reps),
           workoutId: exerciseFormState.workoutId
         },
       });
@@ -129,7 +130,7 @@ const Exercises = () => {
             {/* <button>
               Complete
             </button> */}
-            <button onClick={() => addExercise()} className="bg-cyan-400">
+            <button onClick={addExercise} className="bg-cyan-400">
               Add Exercise
             </button>
           </div>
