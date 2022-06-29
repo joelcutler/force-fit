@@ -23,8 +23,12 @@ const Exercises = () => {
     console.log(activeWorkout)
   }
   console.log(state);
+
   
   const { loading, data } = useQuery(QUERY_USER);
+
+  console.log(activeWorkout);
+
 
   const defExs = defaultExercises.defaultExercises;
 
@@ -32,8 +36,8 @@ const Exercises = () => {
 
   const [addExerciseToWorkout] = useMutation(ADD_EXERCISE);
 
-  const [exerciseFormState, setExerciseFormState] = useState({workoutId: activeWorkout || ''})
-
+  const [exerciseFormState, setExerciseFormState] = useState()
+  // {workoutId: activeWorkout}
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setExerciseFormState({
@@ -67,7 +71,7 @@ const Exercises = () => {
           weight: parseInt(exerciseFormState.weight),
           sets: parseInt(exerciseFormState.sets),
           reps: parseInt(exerciseFormState.reps),
-          workoutId: exerciseFormState.workoutId
+          workoutId: activeWorkout
         },
       });
       if(data){
