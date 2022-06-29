@@ -6,6 +6,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import defaultExercises from "../assets/defaultExercises.json";
 import { parse } from "graphql";
 import defaultCategories from "../assets/defaultCategories.json";
+import Auth from '../utils/auth';
 
 const Exercises = () => {
   // const { data: userData, loading, error, refetch } = useQuery(QUERY_USER);
@@ -58,7 +59,7 @@ const Exercises = () => {
       console.log(e);
     }
   };
-
+  //if (Auth.loggedIn()) {
   return (
     <div className="cards">
       <h3 className="card-title">Exercises</h3>
@@ -140,7 +141,10 @@ const Exercises = () => {
     </div>
     </div>
     </div>
+  
   );
+          //}
+          //return <div>NOT logged in</div>
 };
 
 export default Exercises;

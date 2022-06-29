@@ -8,6 +8,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import { SET_USER } from "../utils/actions";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
+import Auth from '../utils/auth';
 
 const Home = () => {
 
@@ -28,7 +29,7 @@ const Home = () => {
       });
     }
   }, [data, loading, dispatch]);
-
+  if (Auth.loggedIn()) {
   return (
     <div className="flex flex-wrap">
       <Workouts />
@@ -36,6 +37,8 @@ const Home = () => {
       <Exercises />
     </div>
   );
+}
+return <div>NOT logged in</div>
 };
 
 export default Home;
