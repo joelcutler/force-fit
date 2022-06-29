@@ -6,14 +6,22 @@ import { ADD_WORKOUT } from "../utils/mutations";
 import { SET_WORKOUT } from "../utils/actions";
 
 const Today = () => {
+
   let change = 0;
   const [state, dispatch] = useStoreContext();
  
   const newWorkTitle = useRef();
   const [titleInput, setTitleInput] = useState({workoutTitleInput: ''});
 
+//   const [state, dispatch] = useStoreContext();
+//   console.log(state.workout);
+
+
   const { loading, data } = useQuery(QUERY_WORKOUT, {
-    variables: {userId:"62b655c348eb5e50f001132d", workoutId:"62b655cb48eb5e50f001132f"}
+    variables: {
+      userId: "62b655c348eb5e50f001132d",
+      workoutId: "62b655cb48eb5e50f001132f",
+    },
   });
 
 
@@ -72,8 +80,8 @@ const Today = () => {
           ))} 
         </div>
         )}
+
       </div>
-    </div>
     </>
   );
 };
