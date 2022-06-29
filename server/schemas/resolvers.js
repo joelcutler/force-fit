@@ -153,9 +153,9 @@ const resolvers = {
     ) => {
       const exercise = await Exercise.create({
         exerciseName,
-        equipment,
-        description,
-        category,
+        // equipment,
+        // description,
+        // category,
         duration,
         distance,
         weight,
