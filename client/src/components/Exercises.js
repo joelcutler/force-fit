@@ -5,7 +5,7 @@ import { ADD_EXERCISE } from "../utils/mutations";
 import { useStoreContext } from "../utils/GlobalState";
 import defaultExercises from "../assets/defaultExercises.json";
 import { parse } from "graphql";
-import defaultCategories from "../assets/defaultCategories.json"
+import defaultCategories from "../assets/defaultCategories.json";
 
 const Exercises = () => {
   // const { data: userData, loading, error, refetch } = useQuery(QUERY_USER);
@@ -77,10 +77,10 @@ const Exercises = () => {
                 {/* {exercise.exercises.map((exercise) => (
                 <span>{exercise} </span>
               ))} */}
-              {/* </div> */}
-            {/* ))} */}
-          {/* </> */}
-        {/* )} */}
+      {/* </div> */}
+      {/* ))} */}
+      {/* </> */}
+      {/* )} */}
       {/* </div>  */}
       
   <div className="wrapper">
@@ -133,16 +133,14 @@ const Exercises = () => {
             <button onClick={addExercise} className="bg-cyan-400">
               Add Exercise
             </button>
+
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
     </div>
   );
 };
-
-
-
 
 export default Exercises;
