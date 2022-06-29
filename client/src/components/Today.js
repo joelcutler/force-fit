@@ -6,7 +6,6 @@ import { ADD_WORKOUT } from "../utils/mutations";
 import { NEW_WORKOUT, SET_WORKOUT } from "../utils/actions";
 
 const Today = () => {
-
   let change = 0;
   const [state, dispatch] = useStoreContext();
   const newWorkTitle = useRef();
@@ -78,7 +77,6 @@ const Today = () => {
           ))} 
         </div>
         )}
-
       </div>
       </div>
     </>
