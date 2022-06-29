@@ -158,9 +158,7 @@ const Exercises = () => {
             </button> */}
             <button onClick={addExercise} className="bg-cyan-400">
               Add Exercise
-              setExerciseFormState([...exerciseFormState, {}])
             </button>
-
           </div>
         </div>
       </div>

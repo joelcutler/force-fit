@@ -59,7 +59,7 @@ const typeDefs = gql`
       email: String
       password: String
     ): User
-    addWorkout(userId: ID, workoutTitle: String): User
+    addWorkout(userId: ID, workoutTitle: String): Workout
     addExerciseToWorkout(
       workoutId: ID
       exerciseName: String
