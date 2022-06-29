@@ -20,14 +20,14 @@ const Exercises = () => {
   let activeWorkout;
   if(state.workout){
     activeWorkout = state.workout._id;
-    console.log(activeWorkout)
+    //console.log(activeWorkout)
   }
-  console.log(state);
+  //console.log(state);
 
   
   const { loading, data } = useQuery(QUERY_USER);
 
-  console.log(activeWorkout);
+  //console.log(activeWorkout);
 
 
   const defExs = defaultExercises.defaultExercises;
@@ -46,7 +46,7 @@ const Exercises = () => {
     });
   };
 
-  console.log(data, "data")
+  //console.log(data, "data")
 
   useEffect(() => {
     // console.log(data, "user data string at top of useEffect");
@@ -58,7 +58,6 @@ const Exercises = () => {
     }
   }, [data, loading, dispatch]);
   
-
   // THIS FUNCTION IS NOT WORKOING SOMEWHRE FRONT END OR BACKEND
   const addExercise = async (event) => {
     event.preventDefault();
@@ -78,8 +77,6 @@ const Exercises = () => {
       dispatch({
         type: SET_EXERCISE,
         user: addedEx
-
-
       })
     }
 

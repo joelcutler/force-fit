@@ -63,9 +63,16 @@ export const ADD_EXERCISE = gql`
       reps: $reps
       ) {
           workoutTitle
+          _id
+          day
           exercises {
             exerciseName
             _id
+            sets
+            reps
+            duration
+            distance
+            weight
           }
         }
   }

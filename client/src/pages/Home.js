@@ -38,7 +38,7 @@ const Home = () => {
     </div>
   );
 }
-return <div>NOT logged in</div>
+return <div className="w-full flex justify-around m-5"><a href="/login" className="bg-white p-5 rounded-xl">Click here to go to login page</a></div>
 };
 
 export default Home;

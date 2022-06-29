@@ -12,19 +12,23 @@ export const reducer = (state, action) => {
       };
 
     case SET_WORKOUT:
+      console.log(action, "Action")
         return {
           ...state,
           workout: action.workout
         };
+    
+        // case NEW_WORKOUT: 
+        // return {
+        //   ...state,
+        //   workout: action.workout.data.addWorkout
+        // }
 
-        case SET_EXERCISE:
-          console.log(action, "Action")
-          return{
-            
-            ...state,
-
-            user: {...state.user, workouts: [...state.user.workouts.filter(workout => workout._id !== action.exercise.workout._id), action.exercise.workout]}
-          }
+    case SET_EXERCISE:
+      return{
+        ...state,
+        user: {...state.user, workouts: [...state.user.workouts.filter(workout => workout._id !== action.user.data.addExerciseToWorkout), action.user.data.addExerciseToWorkout]}
+      }
     default:
       return state;
   }
