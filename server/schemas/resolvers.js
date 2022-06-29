@@ -113,8 +113,8 @@ const resolvers = {
     },
     //works
     addWorkout: async (parent, { userId, workoutTitle }, context) => {
-      console.log(workoutTitle, "workout title");
-      // if (context.user) {
+      // console.log(workoutTitle, "workout title");
+      // // if (context.user) {
       try {
         const workout = await Workout.create({ workoutTitle });
         console.log(workout, "workout!!");
@@ -170,7 +170,7 @@ const resolvers = {
         },
         { new: true }
       );
-      console.log(updatedUser, "updated user");
+      //console.log(updatedUser, "updated user");
       const updatedWorkout = await Workout.findByIdAndUpdate(
         { _id: workoutId },
         {
