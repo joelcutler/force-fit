@@ -19,7 +19,7 @@ const Today = () => {
     variables: {userId:"62b655c348eb5e50f001132d", workoutId: state.user?.workouts[0]?._id || ''}
   });
 
-
+  console.log("THIS ONE " + data);
 
   useEffect(() => {
     // console.log(data, "user data string at top of useEffect");
@@ -32,9 +32,7 @@ const Today = () => {
     }
   }, [data, loading]);
   console.log(state?.workout);
-
   
-
   const handleTitleChange = (event) => {
     const { name, value } = event.target;
     setTitleInput({

@@ -39,7 +39,6 @@ const Exercises = () => {
     });
   };
   
-
   // THIS FUNCTION IS NOT WORKOING SOMEWHRE FRONT END OR BACKEND
   const addExercise = async (event) => {
     event.preventDefault();
