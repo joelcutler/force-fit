@@ -42,7 +42,7 @@ const resolvers = {
 
     user: async (parent, args, context) => {
       // if (context.user) {
-        console.log(context.user);
+        //console.log(context.user);
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: "workouts"
@@ -60,7 +60,7 @@ const resolvers = {
       // if (context.user) {
       //const user = await User.findById(userId).populate('workouts');
       const workout = await Workout.findById(workoutId).populate("exercises");
-      console.log(workout);
+      console.log("WORKOUT:: " + workout);
       return workout;
       //}
 
@@ -117,7 +117,7 @@ const resolvers = {
       // // if (context.user) {
       try {
         const workout = await Workout.create({ workoutTitle });
-        console.log(workout, "workout!!");
+        //console.log(workout, "workout!!");
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -126,7 +126,7 @@ const resolvers = {
           },
           { new: true }
         ).populate({ path: "workouts" });
-        console.log(updatedUser, "updatedUser!@#");
+        //console.log(updatedUser, "updatedUser!@#");
         return updatedUser;
       } catch (e) {
         console.log(e);
@@ -171,6 +171,7 @@ const resolvers = {
         { new: true }
       );
       //console.log(updatedUser, "updated user");
+      console.log('hi');
       const updatedWorkout = await Workout.findByIdAndUpdate(
         { _id: workoutId },
         {
@@ -178,7 +179,8 @@ const resolvers = {
         },
         { new: true }
       );
-      // console.log(updatedUser, "updated user");
+      console.log('hello');
+      // console.log(updatedWorkout);
       console.log("UPDATED " + updatedWorkout);
       return updatedWorkout;
     },
