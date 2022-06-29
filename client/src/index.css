@@ -78,7 +78,7 @@ code {
   width: 50%;
   height: 100%;
   border-radius: 15px;
-  background-color: #4682b4;
+  background-color: #0339fc;
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
 
@@ -88,13 +88,14 @@ code {
   width: 50%;
   height: 100%;
   border-radius: 15px;
-  background-color: #4682b4;
+  background-color: #0339fc;
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
 
 .toggleBtn1:focus {
   transition: 0.8s;
   transform: rotateY(0deg);
+  background-image: linear-gradient(to right, blue white);
 }
 
 .toggleBtn2:focus {
