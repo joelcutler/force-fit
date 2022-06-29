@@ -166,7 +166,7 @@ function LoginSignup() {
           </div>
           <div
             ref={toggleElement}
-            className="toggleElement1 flex justify-around items-center bg-gray-700"
+            className="toggleElement1 flex justify-around items-center bg-gray-700 rounded-xl"
           >
             <button
               ref={toggleBtn}

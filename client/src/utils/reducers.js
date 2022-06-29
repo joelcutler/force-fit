@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { SET_USER, SET_WORKOUT, SET_EXERCISE } from "./actions";
+import { SET_USER, SET_WORKOUT, SET_EXERCISE, NEW_WORKOUT } from "./actions";
 
 
 export const reducer = (state, action) => {
@@ -12,17 +12,17 @@ export const reducer = (state, action) => {
       };
 
     case SET_WORKOUT:
-      console.log(action, "Action")
         return {
           ...state,
           workout: action.workout
         };
     
-        // case NEW_WORKOUT: 
-        // return {
-        //   ...state,
-        //   workout: action.workout.data.addWorkout
-        // }
+    case NEW_WORKOUT: 
+    console.log(action.workout.data.addWorkout, "Action")
+      return {
+        ...state,
+        workout: action.workout.data.addWorkout
+      }
 
     case SET_EXERCISE:
       return{
