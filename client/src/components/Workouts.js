@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 // import { useQuery, useMutation } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
+import { formatDate } from "../utils/helpers";
 // import { QUERY_USER } from "../utils/queries";
 // import { SET_USER } from "../utils/actions";
 
@@ -10,16 +11,29 @@ const Workouts = () => {
   return (
     <>
       <div className="cards">
-        <h3 className="card-title">Workouts</h3>
+        <h3 className="card-title">Past Workouts</h3>
         {state.user && state.user.workouts ? (
           <div>
             {state.user.workouts.map((workout) => (
               <div key={workout._id}>
-                <h4>{workout.workoutTitle}</h4>
-                <p>{workout.day}</p>
-                {workout.exercises.map((exercise) => (
-                  <span key={exercise.exerciseName}>{exercise.exerciseName} </span>
-                ))}
+                <p>{workout.workoutTitle}</p>
+                <span>Date: {formatDate(workout.day)}</span>
+                <details>
+                  <summary>Workout Details</summary>
+                  {workout.exercises.map((exercise) => (
+                    <div key={exercise._id}>
+                      <p>{exercise.exerciseName}</p>
+                      <details>
+                        <summary>Exercise Details</summary>
+                        <p>Distance: {exercise.distance} miles</p>
+                        <p>Duration: {exercise.duration} minutes</p>
+                        <p>Weight: {exercise.weight} lbs</p>
+                        <p>Sets: {exercise.sets} X</p>
+                        <p>Reps: {exercise.reps} X</p>
+                      </details>
+                    </div>
+                  ))}
+                </details>
               </div>
             ))}
           </div>
