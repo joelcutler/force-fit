@@ -104,7 +104,7 @@ const Today = () => {
                   {exercise.reps && (<p className="mr-2">{exercise.reps} reps</p>)}
                   </div>
                   <button id={exercise._id} onClick={handleDeleteExercise} className='w-7'>
-                    <img src="https://img.icons8.com/color/48/000000/delete-forever.png" className=""/>
+                  ❌
                   </button>
                 </div>
               ))}
