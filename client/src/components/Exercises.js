@@ -115,7 +115,7 @@ const Exercises = () => {
           <div className="ui raised card m-auto">
             {/* <h2>Add Your Exercise</h2> */}
             <div className="ml-5">
-              <div className="workout-type">
+              {/* <div className="workout-type">
                 <label>Exercise Type: </label>
                 <select
                   className="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
@@ -132,7 +132,7 @@ const Exercises = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
               <div className="cardio-form">
                 <div className="cardio-name pb-2">
                   <label>Name: </label>

@@ -78,7 +78,7 @@ const Today = () => {
             onChange={handleTitleChange}
             name="workoutTitleInput"
             placeholder="ADD WORKOUT TITLE"
-            className="w-4/6 h-12 shadow-xl border-2 border-gray-300 rounded-lg p-2 "
+            className="w-4/6 h-12 shadow-lg border-2 border-gray-300 rounded-lg p-2 "
           />
           <button
             onClick={() => addNewWorkout()}
@@ -90,11 +90,11 @@ const Today = () => {
         {loading ? (
           <div>loading</div>
         ) : (
-          <div className="mx-5 mt-3">
+          <div className="mx-5 mt-5">
             {state?.user?.workouts.length > 0 && (
               <div className="">
-                <div className="font-bold text-lg my-3 w-full text-center">
-                  Workout: {state.user.workouts[0].workoutTitle}
+                <div className="font-bold text-lg my-3 w-auto m-5 text-center bg-gray-200 shadow m-auto p-2 rounded-md">
+                  <p className="underline">Workout</p> {state.user.workouts[0].workoutTitle}
                 </div>
                 <p>Exercises:</p>
                 {state?.user?.workouts?.length &&
