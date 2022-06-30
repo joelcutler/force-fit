@@ -8,7 +8,7 @@ body {
     "Lucida Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(../src/assets/galaxy5.png);
+  background-image: url('./assets/hyperspace.jpg');
   background-size: cover;
   background-attachment: fixed;
   width: auto;
