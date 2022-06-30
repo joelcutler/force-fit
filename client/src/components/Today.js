@@ -31,7 +31,6 @@ const Today = () => {
       });
       //console.log("DATA " + data);
     }
-
   }, [data, loading, dispatch]);
 
   const handleTitleChange = (event) => {
@@ -46,13 +45,17 @@ const Today = () => {
   const addNewWorkout = async (event) => {
     //event.preventDefault();
     change++;
-    const newWorkout = await addWorkout({
+    const {
+      data: { addWorkout: newWorkout },
+    } = await addWorkout({
       variables: { workoutTitle: titleInput.workoutTitleInput },
     });
+    console.log(newWorkout, "new  wkt");
     dispatch({
-      type: SET_WORKOUT,
+      type: NEW_WORKOUT,
       workout: newWorkout,
     });
+    newWorkTitle.current.value = "";
   };
 
   const [deleteExerciseFromWorkout] = useMutation(DELETE_EXERCISE);
@@ -60,19 +63,15 @@ const Today = () => {
     const workoutId = state?.workout?._id;
     const exerciseId = event.target.id;
     const response = await deleteExerciseFromWorkout({
-      variables: { workoutId: workoutId,
-      exerciseId: exerciseId }
+      variables: { workoutId: workoutId, exerciseId: exerciseId },
     });
-  }
-
-  if (loading) {
-    return <div>loading</div>;
-  }
+  };
 
   return (
     <>
       <div className="cards">
         <h3 className="card-title">Today's Workout</h3>
+
         <div className="flex justify-around">
           <input
             ref={newWorkTitle}
@@ -88,29 +87,54 @@ const Today = () => {
             Save Workout
           </button>
         </div>
-        <div>
-          {state?.user?.workouts.length > 0 && (
-            <div className="">
-              <div className="my-3 w-full text-center">Workout Name: {state.user.workouts[0].workoutTitle}</div>
-              <p>Exercises:</p>
-              {state.user.workouts[0].exercises.map((exercise) => (
-                <div key={exercise._id} className='m-3 flex justify-between bg-gray-100 p-4 shadow rounded-md'>
-                  <div className="flex ">
-                  <p className="mx-2 underline uppercase">{exercise.exerciseName}:  </p>
-                  {exercise.distance && (<p className="mr-2">{exercise.distance} miles,</p>)}
-                  {exercise.duration && (<p className="mr-2">{exercise.duration} minutes,</p>)}
-                  {exercise.weight && (<p className="mr-2">{exercise.weight} lbs.</p>)}
-                  {exercise.sets && (<p className="mr-2">{exercise.sets} sets,</p>)}
-                  {exercise.reps && (<p className="mr-2">{exercise.reps} reps</p>)}
-                  </div>
-                  <button id={exercise._id} onClick={handleDeleteExercise} className='w-7'>
-                  ❌
-                  </button>
+        {loading ? (
+          <div>loading</div>
+        ) : (
+          <div className="mx-5 mt-3">
+            {state?.user?.workouts.length > 0 && (
+              <div className="">
+                <div className="my-3 w-full text-center">
+                  Workout Name: {state.user.workouts[0].workoutTitle}
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+                <p>Exercises:</p>
+                {state.user.workouts[0].exercises.map((exercise) => (
+                  <div
+                    key={exercise._id}
+                    className="m-3 flex justify-between bg-gray-100 p-4 shadow rounded-md"
+                  >
+                    <div className="flex ">
+                      <p className="mx-2 underline uppercase">
+                        {exercise.exerciseName}:{" "}
+                      </p>
+                      {exercise.distance && (
+                        <p className="mr-2">{exercise.distance} miles,</p>
+                      )}
+                      {exercise.duration && (
+                        <p className="mr-2">{exercise.duration} minutes,</p>
+                      )}
+                      {exercise.weight && (
+                        <p className="mr-2">{exercise.weight} lbs.</p>
+                      )}
+                      {exercise.sets && (
+                        <p className="mr-2">{exercise.sets} sets,</p>
+                      )}
+                      {exercise.reps && (
+                        <p className="mr-2">{exercise.reps} reps</p>
+                      )}
+                    </div>
+                    <button
+                      id={exercise._id}
+                      onClick={handleDeleteExercise}
+                      className="w-7"
+                    >
+                      ❌
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

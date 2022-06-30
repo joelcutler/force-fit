@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -12,16 +12,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $userName: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      userName: $userName
-      email: $email
-      password: $password
-    ) {
+  mutation addUser($userName: String!, $email: String!, $password: String!) {
+    addUser(userName: $userName, email: $email, password: $password) {
       token
       user {
         _id
@@ -32,34 +24,35 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WORKOUT = gql`
-  mutation addWorkout ($userId: ID, $workoutTitle: String) {
+  mutation addWorkout($userId: ID, $workoutTitle: String) {
     addWorkout(userId: $userId, workoutTitle: $workoutTitle) {
-        workoutTitle
+      workoutTitle
+      _id
+      day
+      exercises {
         _id
-        exercises {
-          _id
-          exerciseName
-          sets
-          reps
-          duration
-          distance
-          weight
-        }
+        exerciseName
+        sets
+        reps
+        duration
+        distance
+        weight
+      }
     }
   }
 `;
 
 export const ADD_EXERCISE = gql`
-  mutation addExerciseToWorkout( 
-      $workoutId: ID
-      $exerciseName: String
-      $duration: Int
-      $distance: Int
-      $weight: Int
-      $sets: Int
-      $reps: Int
+  mutation addExerciseToWorkout(
+    $workoutId: ID
+    $exerciseName: String
+    $duration: Int
+    $distance: Int
+    $weight: Int
+    $sets: Int
+    $reps: Int
   ) {
-      addExerciseToWorkout(
+    addExerciseToWorkout(
       workoutId: $workoutId
       exerciseName: $exerciseName
       duration: $duration
@@ -67,42 +60,45 @@ export const ADD_EXERCISE = gql`
       weight: $weight
       sets: $sets
       reps: $reps
-      ) {
-          workoutTitle
-          _id
-          day
-          exercises {
-            exerciseName
-            _id
-            sets
-            reps
-            duration
-            distance
-            weight
-          }
-        }
-  }
-`;
-
-export const DELETE_EXERCISE = gql`
-  mutation deleteExerciseFromWorkout (
-    $workoutId: ID
-    $exerciseId: ID) {
-    deleteExerciseFromWorkout (
-      workoutId: $workoutId
-      exerciseId: $exerciseId
     ) {
       workoutTitle
       _id
       day
-      exercises{
+      exercises {
         exerciseName
-            _id
-            sets
-            reps
-            duration
-            distance
-            weight
+        _id
+        sets
+        reps
+        duration
+        distance
+        weight
+      }
+    }
+  }
+`;
+
+export const DELETE_WORKOUT_MUTATION = gql`
+  mutation deleteWorkoutFromUser($userId: ID, $workoutId: ID) {
+    deleteWorkoutFromUser(userId: $userId, workoutId: $workoutId) {
+      userName
+    }
+  }
+`;
+
+export const DELETE_EXERCISE = gql`
+  mutation deleteExerciseFromWorkout($workoutId: ID, $exerciseId: ID) {
+    deleteExerciseFromWorkout(workoutId: $workoutId, exerciseId: $exerciseId) {
+      workoutTitle
+      _id
+      day
+      exercises {
+        exerciseName
+        _id
+        sets
+        reps
+        duration
+        distance
+        weight
       }
     }
   }
