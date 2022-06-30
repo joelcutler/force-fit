@@ -39,7 +39,7 @@ const Home = () => {
   }
   return (
     <div className="w-full flex justify-around m-5">
-      <a href="/login" className="bg-white p-5 rounded-xl">
+      <a href="/login" className="text-white p-5 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br">
         Click here to go to login page
       </a>
     </div>
