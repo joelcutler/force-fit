@@ -92,10 +92,10 @@ function LoginSignup() {
   return (
     <>
       <div className="w-full h-screen">
-        <div className="flex flex-wrap bg-opacity-0 m-auto mt-5 rounded-xl relative w-5/6 login-card">
+        <div className="flex flex-wrap bg-opacity-0 m-auto mt-16 rounded-xl relative w-5/6 py-10 login-card">
           <div className="w-1/2 p-5 rounded-xl">
             <h1 className="font-bold text-xl">LOGIN</h1>
-            <div>
+            <div className="mt-4">
               <p className="w-full text-start">Email</p>
               <input
                 type="text"
@@ -127,7 +127,7 @@ function LoginSignup() {
           </div>
           <div className="w-1/2 p-5">
             <h1 className="font-bold text-xl">SIGNUP</h1>
-            <div>
+            <div className="mt-4">
               <p className="w-full text-start">Username</p>
               <input
                 type="text"

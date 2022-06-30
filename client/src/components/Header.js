@@ -12,7 +12,7 @@ const Header = () => {
           <a
             href="/login"
             onClick={() => Auth.logout()}
-            className="login-signup text-white"
+            className="login-signup text-white absolute right-10 top-1"
           >
             Logout
           </a>
