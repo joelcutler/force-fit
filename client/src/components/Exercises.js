@@ -59,7 +59,11 @@ const Exercises = () => {
   const addExercise = async (event) => {
     event.preventDefault();
     try {
-      const addedEx = await addExerciseToWorkout({
+      const {
+        data: {
+          addExerciseToWorkout: { exercises, _id },
+        },
+      } = await addExerciseToWorkout({
         variables: {
           exerciseName: exerciseFormState.exerciseName,
           distance: parseInt(exerciseFormState.distance),
@@ -70,12 +74,12 @@ const Exercises = () => {
           workoutId: activeWorkout,
         },
       });
-      if (data) {
-        dispatch({
-          type: SET_EXERCISE,
-          user: addedEx,
-        });
-      }
+
+      dispatch({
+        type: SET_EXERCISE,
+        exercises: exercises,
+        workoutId: _id,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -206,12 +210,18 @@ const Exercises = () => {
                 {/* <button>
               Complete
             </button> */}
-                <button
-                  className="w-3/12 text-white bg-cyan-400 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br p-2.5"
-                  onClick={addExercise}
-                >
-                  Add Exercise
-                </button>
+
+                {state?.user?.workouts.length ? (
+                  <button
+                    className="w-3/12 text-white bg-cyan-400 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br p-2.5"
+                    onClick={addExercise}
+                  >
+                    Add Exercise
+                  </button>
+                ) : (
+                  <h4 className="ml-5 mt-5">Add a workout first, you must!</h4>
+                )}
+
                 {/* setExerciseFormState([...exerciseFormState, {}]) */}
               </div>
             </div>

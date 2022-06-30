@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
 import { formatDate } from "../utils/helpers";
-import { TrashIcon } from "@heroicons/react/outline";
 import { DELETE_WORKOUT_MUTATION } from "../utils/mutations";
 import { DELETE_WORKOUT } from "../utils/actions";
 
@@ -37,7 +36,7 @@ const Workouts = () => {
                   <span className="font-medium">
                     {workout.workoutTitle}
                     <button onClick={() => deleteWorkoutHandler(workout._id)}>
-                      <TrashIcon className="h-5 w-5" />
+                      ❌
                     </button>
                   </span>
                 </p>
@@ -68,7 +67,7 @@ const Workouts = () => {
             ))}
           </div>
         ) : (
-          <h4 className="ml-5"> You haven't added any workouts yet!</h4>
+          <h4 className="ml-5">Add a workout first, you must!</h4>
         )}
       </div>
 
