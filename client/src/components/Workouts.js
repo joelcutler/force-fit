@@ -28,40 +28,45 @@ const Workouts = () => {
       <div className="cards">
         <h3 className="card-title">Past Workouts</h3>
         {state.user && state.user.workouts.length ? (
-          <div className="ml-5">
+          <div className="mx-5">
             {state.user.workouts.map((workout) => (
-              <div key={workout._id}>
-                <p className="font-bold text-lg">
-                  Workout:{" "}
-                  <span className="font-medium">
-                    {workout.workoutTitle}
-                    <button onClick={() => deleteWorkoutHandler(workout._id)}>
-                      ❌
-                    </button>
-                  </span>
-                </p>
+              <div
+                className="bg-gray-100 p-4 shadow rounded-md "
+                key={workout._id}
+              >
+                <div className="flex justify-between ">
+                  <p className="font-bold text-lg">
+                    Workout:{" "}
+                    <span className="font-medium">{workout.workoutTitle}</span>
+                  </p>
+                  <button onClick={() => deleteWorkoutHandler(workout._id)}>
+                    ❌
+                  </button>
+                </div>
                 <span>{formatDate(workout.day)}</span>
                 <details className="ml-2.5">
                   <summary>Workout Details</summary>
-                  {workout.exercises.map((exercise) => (
-                    <div key={exercise._id}>
-                      <p>{exercise.exerciseName}</p>
-                      <details className="ml-2.5">
-                        <summary>Exercise Details</summary>
-                        {exercise.distance && (
-                          <p>Distance: {exercise.distance} mi</p>
-                        )}
-                        {exercise.duration && (
-                          <p>Duration: {exercise.duration} mins</p>
-                        )}
-                        {exercise.weight && (
-                          <p>Weight: {exercise.weight} lbs</p>
-                        )}
-                        {exercise.sets && <p>Sets: {exercise.sets}x</p>}
-                        {exercise.reps && <p>Reps: {exercise.reps}x</p>}
-                      </details>
-                    </div>
-                  ))}
+                  {workout?.exercises?.length
+                    ? workout.exercises.map((exercise) => (
+                        <div key={exercise._id}>
+                          <p>{exercise.exerciseName}</p>
+                          <details className="ml-2.5">
+                            <summary>Exercise Details</summary>
+                            {exercise.distance && (
+                              <p>Distance: {exercise.distance} mi</p>
+                            )}
+                            {exercise.duration && (
+                              <p>Duration: {exercise.duration} mins</p>
+                            )}
+                            {exercise.weight && (
+                              <p>Weight: {exercise.weight} lbs</p>
+                            )}
+                            {exercise.sets && <p>Sets: {exercise.sets}x</p>}
+                            {exercise.reps && <p>Reps: {exercise.reps}x</p>}
+                          </details>
+                        </div>
+                      ))
+                    : null}
                 </details>
               </div>
             ))}

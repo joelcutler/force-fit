@@ -93,44 +93,47 @@ const Today = () => {
           <div className="mx-5 mt-3">
             {state?.user?.workouts.length > 0 && (
               <div className="">
-                <div className="my-3 w-full text-center">
-                  Workout Name: {state.user.workouts[0].workoutTitle}
+                <div className="font-bold text-lg my-3 w-full text-center">
+                  Workout: {state.user.workouts[0].workoutTitle}
                 </div>
                 <p>Exercises:</p>
-                {state.user.workouts[0].exercises.map((exercise) => (
-                  <div
-                    key={exercise._id}
-                    className="m-3 flex justify-between bg-gray-100 p-4 shadow rounded-md"
-                  >
-                    <div className="flex ">
-                      <p className="mx-2 underline uppercase">
-                        {exercise.exerciseName}:{" "}
-                      </p>
-                      {exercise.distance && (
-                        <p className="mr-2">{exercise.distance} miles,</p>
-                      )}
-                      {exercise.duration && (
-                        <p className="mr-2">{exercise.duration} minutes,</p>
-                      )}
-                      {exercise.weight && (
-                        <p className="mr-2">{exercise.weight} lbs.</p>
-                      )}
-                      {exercise.sets && (
-                        <p className="mr-2">{exercise.sets} sets,</p>
-                      )}
-                      {exercise.reps && (
-                        <p className="mr-2">{exercise.reps} reps</p>
-                      )}
-                    </div>
-                    <button
-                      id={exercise._id}
-                      onClick={handleDeleteExercise}
-                      className="w-7"
-                    >
-                      ❌
-                    </button>
-                  </div>
-                ))}
+                {state?.user?.workouts?.length &&
+                state?.user?.workouts[0]?.exercises?.length
+                  ? state?.user?.workouts[0]?.exercises.map((exercise) => (
+                      <div
+                        key={exercise._id}
+                        className="m-3 flex justify-between bg-gray-100 p-4 shadow rounded-md"
+                      >
+                        <div className="flex ">
+                          <p className="mx-2 underline uppercase">
+                            {exercise.exerciseName}:{" "}
+                          </p>
+                          {exercise.distance && (
+                            <p className="mr-2">{exercise.distance} miles,</p>
+                          )}
+                          {exercise.duration && (
+                            <p className="mr-2">{exercise.duration} minutes,</p>
+                          )}
+                          {exercise.weight && (
+                            <p className="mr-2">{exercise.weight} lbs.</p>
+                          )}
+                          {exercise.sets && (
+                            <p className="mr-2">{exercise.sets} sets,</p>
+                          )}
+                          {exercise.reps && (
+                            <p className="mr-2">{exercise.reps} reps</p>
+                          )}
+                        </div>
+                        <button
+                          id={exercise._id}
+                          onClick={handleDeleteExercise}
+                          className="w-7"
+                        >
+                          ❌
+                        </button>
+                      </div>
+                    ))
+                  : null}
               </div>
             )}
           </div>

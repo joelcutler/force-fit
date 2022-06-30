@@ -38,17 +38,26 @@ export const reducer = (state, action) => {
       };
 
     case SET_EXERCISE:
+      const newWorkouts = state.user.workouts.map((workout) => {
+        if (workout._id === action.workoutId) {
+          return { ...workout, exercises: action.exercises };
+        } else {
+          return workout;
+        }
+      });
+
+      console.log(newWorkouts);
       return {
         ...state,
         user: {
           ...state.user,
-          workouts: [
-            ...state.user.workouts.map((workout) => {
-              if (workout._id === action.workoutId) {
-                workout.exercises = action.exercises;
-              }
-            }),
-          ],
+          workouts: newWorkouts,
+          // [
+          //   ...state.user.workouts.filter(
+          //     (workout) => workout._id !== action.workout._id
+          //   ),
+          //   action.workout,
+          // ],
         },
       };
 
