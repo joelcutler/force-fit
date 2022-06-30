@@ -77,16 +77,24 @@ code {
   left: 0;
   width: 50%;
   height: 100%;
-  background-color: #0339fc;
+  background-image: url("https://images2.alphacoders.com/124/1240656.png"); 
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;  
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
+
+/* background-color: #0339fc; */
 
 .toggleElement2 {
   position: absolute;
   left: 50%;
   width: 50%;
   height: 100%;
-  background-color: #0339fc;
+  background-image: url("https://w0.peakpx.com/wallpaper/862/343/HD-wallpaper-star-wars-darth-vader-lightsaber-sith-star-wars.jpg"); 
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;  
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 }
 
