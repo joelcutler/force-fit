@@ -109,17 +109,30 @@ const Exercises = () => {
         <div className="ui container exercise">
           <div className="ui raised card m-auto">
             {/* <h2>Add Your Exercise</h2> */}
-            <div>
+            <div className="ml-5">
               <div className="workout-type">
-                <label>Exercise Type:</label>
-                {/* <select name="type" id="type" defaultValue="Select Exercise Type">
-            {defCats.map((categories) => (<option  key={categories._id} value={categories.categoryName}>{categories.categoryName}</option>))}
-            </select> */}
+                <label>Exercise Type: </label>
+                <select
+                  className="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                  name="type"
+                  id="type"
+                  defaultValue="Select Exercise Type"
+                >
+                  {defCats.map((categories) => (
+                    <option
+                      key={categories._id}
+                      value={categories.categoryName}
+                    >
+                      {categories.categoryName}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="cardio-form">
-                <div className="cardio-name">
-                  <label>Name:</label>
+                <div className="cardio-name pb-2">
+                  <label>Name: </label>
                   <input
+                    className="w-1/2 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="text"
                     name="exerciseName"
@@ -127,9 +140,10 @@ const Exercises = () => {
                     placeholder="Running"
                   />
                 </div>
-                <div className="distance">
-                  <label>Distance (miles):</label>
+                <div className="distance pb-2">
+                  <label>Distance (miles): </label>
                   <input
+                    className="w-1/4 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="number"
                     name="distance"
@@ -137,9 +151,10 @@ const Exercises = () => {
                     placeholder="5"
                   />
                 </div>
-                <div className="duration">
-                  <label>Duration (minutes):</label>
+                <div className="duration pb-2">
+                  <label>Duration (minutes): </label>
                   <input
+                    className="w-1/4 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="number"
                     name="duration"
@@ -149,9 +164,10 @@ const Exercises = () => {
                 </div>
               </div>
               <div className="resistance-form">
-                <div className="weight">
-                  <label>Weight (lbs):</label>
+                <div className="weight pb-2">
+                  <label>Weight (lbs): </label>
                   <input
+                    className="w-1/4 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="number"
                     name="weight"
@@ -159,9 +175,10 @@ const Exercises = () => {
                     placeholder="200"
                   />
                 </div>
-                <div className="sets">
-                  <label>Sets:</label>
+                <div className="sets pb-2">
+                  <label>Sets: </label>
                   <input
+                    className="w-1/4 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="number"
                     name="sets"
@@ -169,9 +186,10 @@ const Exercises = () => {
                     placeholder="4"
                   />
                 </div>
-                <div className="reps">
-                  <label>Reps:</label>
+                <div className="reps pb-2">
+                  <label>Reps: </label>
                   <input
+                    className="w-1/4 block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFormChange}
                     type="number"
                     name="reps"
@@ -188,17 +206,15 @@ const Exercises = () => {
                 {/* <button>
               Complete
             </button> */}
-
                 <button
+                  className="bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 p-2 rounded"
                   onClick={addExercise}
-                  className="bg-cyan-400 rounded-xl w-1/2 "
                 >
                   Add Exercise
                 </button>
                 {/* setExerciseFormState([...exerciseFormState, {}]) */}
               </div>
             </div>
-
           </div>
         </div>
       </div>
