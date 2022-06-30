@@ -1,0 +1,29 @@
+{
+    "defaultCategories": 
+    [
+        {
+            "_id": 1,
+            "categoryName": "Arms"
+        },
+        {
+            "_id": 2,
+            "categoryName": "Legs"
+        },
+        {
+            "_id": 3,
+            "categoryName": "Chest"
+        },
+        {
+            "_id": 4,
+            "categoryName": "Core"
+        },
+        {
+            "_id": 5,
+            "categoryName": "Back"
+        },
+        {
+            "_id": 6,
+            "categoryName": "Cardio"
+        }
+    ]
+  }
