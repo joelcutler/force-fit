@@ -18,7 +18,7 @@ const Header = () => {
         )}
         
         <img src={HeaderIMG} className="headerimg" alt="Force Fit" />
-        <img src={Helmets} className="helmetsimg" alt="Helmets" class="width"/>
+        {/* <img src={Helmets} className="helmetsimg" alt="Helmets" class="width"/> */}
         <p className="header-text"> Get fit, you will</p>
       </nav>
     </>
