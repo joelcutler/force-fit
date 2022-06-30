@@ -130,6 +130,10 @@ code {
   .headerimg {
     width: 60%;
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a35b7d6b8aceb66542455ae2509c2db0186117d3
 }
 
 .width{
@@ -140,6 +144,7 @@ code {
   margin: auto;
   width: auto;
   width: 500px;
+<<<<<<< HEAD
 }
 
 .notLogged {
@@ -152,4 +157,7 @@ code {
 .notLogged p {
   color: white;
   text-shadow: 2px 2px black;
+=======
+
+>>>>>>> a35b7d6b8aceb66542455ae2509c2db0186117d3
 }
