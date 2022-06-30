@@ -79,6 +79,7 @@ code {
 
 .toggleElement1 {
   position: absolute;
+  top: 0;
   left: 0;
   width: 50%;
   height: 100%;
@@ -92,6 +93,7 @@ code {
 
 .toggleElement2 {
   position: absolute;
+  top: 0;
   left: 50%;
   width: 50%;
   height: 100%;
@@ -117,6 +119,7 @@ code {
   .cards {
     width: 60%;
     margin: auto;
+    margin-top: 15px;
   }
   .headerimg {
     width: 50%;
@@ -126,6 +129,7 @@ code {
   .cards {
     width: 80%;
     margin: auto;
+    margin-top: 15px;
   }
   .headerimg {
     width: 60%;
