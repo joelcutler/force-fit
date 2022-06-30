@@ -28,7 +28,7 @@ const Workouts = () => {
     <>
       <div className="cards">
         <h3 className="card-title">Past Workouts</h3>
-        {state.user && state.user.workouts ? (
+        {state.user && state.user.workouts.length ? (
           <div className="ml-5">
             {state.user.workouts.map((workout) => (
               <div key={workout._id}>
@@ -68,7 +68,7 @@ const Workouts = () => {
             ))}
           </div>
         ) : (
-          <h4> You haven't added any workouts yet!</h4>
+          <h4 className="ml-5"> You haven't added any workouts yet!</h4>
         )}
       </div>
 

@@ -28,6 +28,7 @@ export const ADD_WORKOUT = gql`
     addWorkout(userId: $userId, workoutTitle: $workoutTitle) {
       workoutTitle
       _id
+      day
       exercises {
         _id
         exerciseName

@@ -23,10 +23,18 @@ export const reducer = (state, action) => {
       };
 
     case NEW_WORKOUT:
-      console.log(action.workout.data.addWorkout, "Action");
+      // console.log(action.workout.data.addWorkout, "Action");
       return {
         ...state,
-        workout: action.workout.data.addWorkout,
+        user: {
+          ...state.user,
+          workouts: [
+            action.workout,
+            ...state.user.workouts.filter(
+              (workout) => workout._id !== action.workout
+            ),
+          ],
+        },
       };
 
     case SET_EXERCISE:
