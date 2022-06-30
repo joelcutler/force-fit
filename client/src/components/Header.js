@@ -8,17 +8,13 @@ const Header = () => {
   return (
     <>
       <nav className="header">
-        {Auth.loggedIn() ? (
+        {Auth.loggedIn() && (
           <a
             href="/login"
             onClick={() => Auth.logout()}
             className="login-signup text-white"
           >
             Logout
-          </a>
-        ) : (
-          <a href="/login" className="login-signup text-white">
-            Login/SignUp
           </a>
         )}
 
