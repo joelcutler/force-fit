@@ -1,5 +1,3 @@
-force-fit
-
 # Force Fit
 
 ## Description
@@ -18,3 +16,7 @@ Logan Parke,
 Joel Cutler,
 Jordan Edginton,
 Rochelle Davis,
+
+![Screen Shot 2022-06-30 at 3 42 44 PM](https://user-images.githubusercontent.com/96760168/176783909-7f108722-a196-4b99-8990-e2e9391c809e.png)
+
+![force-fit](https://user-images.githubusercontent.com/96760168/176783838-4ac32bea-9115-4e2b-bc13-a75ddec204c3.jpg)
