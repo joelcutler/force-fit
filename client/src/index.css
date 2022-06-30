@@ -4,9 +4,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(../src/assets/galaxy5.png);
@@ -14,6 +13,7 @@ body {
   background-attachment: fixed;
   width: auto;
   height: auto;
+  color: #404040;
 }
 
 code {
@@ -58,6 +58,8 @@ code {
   padding: 5px;
   overflow-y: auto;
   border-radius: 15px;
+  background-image: url(../src/assets/r2.jpg);
+  background-position: 1200px 750px;
 }
 
 .card-title {
@@ -128,6 +130,7 @@ code {
   .headerimg {
     width: 60%;
   }
+
 }
 
 .width{
@@ -138,4 +141,5 @@ code {
   margin: auto;
   width: auto;
   width: 500px;
+
 }
