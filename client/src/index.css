@@ -58,6 +58,8 @@ code {
   padding: 5px;
   overflow-y: auto;
   border-radius: 15px;
+  background-image: url(../src/assets/r2.jpg);
+  background-position: 1200px 750px;
 }
 
 .card-title {
@@ -128,14 +130,4 @@ code {
   .headerimg {
     width: 60%;
   }
-}
-
-.width{
-  text-align: center;
-  display: block;
-  justify-content: center; 
-  align-items: center; 
-  margin: auto;
-  width: auto;
-  width: 500px;
 }
