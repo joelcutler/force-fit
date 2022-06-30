@@ -6,7 +6,7 @@ force-fit
 
 Who wants to be encouraged to get fit when you can be forced to get fit. Force Fit will do just that. Force Fit allows you to customize, track, and see your workout history all in one place. This allows you to push yourself harder as you progress each day.
 
-View the app in action here: \*\*\*\*INSERT LINK HERE!!
+View the app in action here: https://force-fit-order-66.herokuapp.com/
 
 ## User Story
 
