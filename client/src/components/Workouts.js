@@ -16,14 +16,16 @@ const Workouts = () => {
           <div>
             {state.user.workouts.map((workout) => (
               <div key={workout._id}>
-                <p>{workout.workoutTitle}</p>
+                <p className="text-decoration-line: underline">
+                  Workout: {workout.workoutTitle}
+                </p>
                 <span>Date: {formatDate(workout.day)}</span>
-                <details>
+                <details className="ml-2.5">
                   <summary>Workout Details</summary>
                   {workout.exercises.map((exercise) => (
                     <div key={exercise._id}>
                       <p>{exercise.exerciseName}</p>
-                      <details>
+                      <details className="ml-2.5">
                         <summary>Exercise Details</summary>
                         <p>Distance: {exercise.distance} miles</p>
                         <p>Duration: {exercise.duration} minutes</p>
