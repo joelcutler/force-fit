@@ -207,7 +207,7 @@ const Exercises = () => {
               Complete
             </button> */}
                 <button
-                  className="bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 p-2 rounded"
+                  className="w-3/12 text-white bg-cyan-400 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br p-2.5"
                   onClick={addExercise}
                 >
                   Add Exercise
