@@ -8,7 +8,7 @@ body {
     "Lucida Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(../src/assets/galaxy5.png);
+  background-image: url('./assets/hyperspace.jpg');
   background-size: cover;
   background-attachment: fixed;
   width: auto;
@@ -58,6 +58,8 @@ code {
   padding: 5px;
   overflow-y: auto;
   border-radius: 15px;
+  background-image: url(../src/assets/r2.jpg);
+  background-position: 1200px 750px;
 }
 
 .card-title {
@@ -138,4 +140,16 @@ code {
   margin: auto;
   width: auto;
   width: 500px;
+}
+
+.notLogged {
+  background-image: url('./assets/deathStar.jpg');
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.notLogged p {
+  color: white;
+  text-shadow: 2px 2px black;
 }

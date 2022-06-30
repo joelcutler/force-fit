@@ -93,7 +93,7 @@ function LoginSignup() {
     <>
       <div className="w-full h-screen">
         <div className="flex flex-wrap bg-opacity-0 m-auto mt-5 rounded-xl relative w-5/6 login-card">
-          <div className="w-1/2 p-5">
+          <div className="w-1/2 p-5 rounded-xl">
             <h1 className="font-bold text-xl">LOGIN</h1>
             <div>
               <p className="w-full text-start">Email</p>
