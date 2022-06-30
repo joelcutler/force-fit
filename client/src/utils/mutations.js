@@ -83,3 +83,22 @@ export const DELETE_WORKOUT_MUTATION = gql`
     }
   }
 `;
+
+export const DELETE_EXERCISE = gql`
+  mutation deleteExerciseFromWorkout($workoutId: ID, $exerciseId: ID) {
+    deleteExerciseFromWorkout(workoutId: $workoutId, exerciseId: $exerciseId) {
+      workoutTitle
+      _id
+      day
+      exercises {
+        exerciseName
+        _id
+        sets
+        reps
+        duration
+        distance
+        weight
+      }
+    }
+  }
+`;

@@ -189,13 +189,11 @@ const resolvers = {
       { workoutId, exerciseId },
       context
     ) => {
-      console.log("exercise ID: " + exerciseId);
       const updatedWorkout = await Workout.findByIdAndUpdate(
         { _id: workoutId },
         { $pull: { exercises: { _id: exerciseId } } },
         { new: true }
       );
-      console.log("UPDATED WORKOUT: " + updatedWorkout);
       return updatedWorkout;
     },
     deleteWorkoutFromUser: async (parent, { userId, workoutId }, context) => {

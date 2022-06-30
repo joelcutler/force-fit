@@ -8,10 +8,9 @@ import { useStoreContext } from "../utils/GlobalState";
 import { SET_USER } from "../utils/actions";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Home = () => {
-
   const [state, dispatch] = useStoreContext();
 
   // const { loading, data } = useQuery(QUERY_USER, {
@@ -30,15 +29,21 @@ const Home = () => {
     }
   }, [data, loading, dispatch]);
   if (Auth.loggedIn()) {
+    return (
+      <div className="flex flex-wrap">
+        <Workouts />
+        <Today />
+        <Exercises />
+      </div>
+    );
+  }
   return (
-    <div className="flex flex-wrap">
-      <Workouts />
-      <Today />
-      <Exercises />
+    <div className="w-full flex justify-around m-5">
+      <a href="/login" className="bg-white p-5 rounded-xl">
+        Click here to go to login page
+      </a>
     </div>
   );
-}
-return <div className="w-full flex justify-around m-5"><a href="/login" className="bg-white p-5 rounded-xl">Click here to go to login page</a></div>
 };
 
 export default Home;
