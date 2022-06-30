@@ -127,3 +127,13 @@ code {
     width: 60%;
   }
 }
+
+.width{
+  text-align: center;
+  display: block;
+  justify-content: center; 
+  align-items: center; 
+  margin: auto;
+  width: auto;
+  width: 500px;
+}

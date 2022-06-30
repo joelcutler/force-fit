@@ -2,6 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import HeaderIMG from "../assets/header.png";
 import Auth from "../utils/auth";
+import Helmets from "../assets/swhelmets.jpg";
 
 
 const Header = () => {
@@ -17,6 +18,7 @@ const Header = () => {
         )}
         
         <img src={HeaderIMG} className="headerimg" alt="Force Fit" />
+        <img src={Helmets} className="helmetsimg" alt="Helmets" class="width"/>
         <p className="header-text"> Get fit, you will</p>
       </nav>
     </>
