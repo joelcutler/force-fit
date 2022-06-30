@@ -31,7 +31,7 @@ const Workouts = () => {
           <div className="mx-5">
             {state.user.workouts.map((workout) => (
               <div
-                className="bg-gray-100 p-4 shadow rounded-md "
+                className="bg-gray-100 p-4 shadow rounded-md mt-2"
                 key={workout._id}
               >
                 <div className="flex justify-between ">
