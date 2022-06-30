@@ -1,25 +1,47 @@
 import React, { useEffect } from "react";
-// import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
 import { formatDate } from "../utils/helpers";
-// import { QUERY_USER } from "../utils/queries";
-// import { SET_USER } from "../utils/actions";
+import { TrashIcon } from "@heroicons/react/outline";
+import { DELETE_WORKOUT_MUTATION } from "../utils/mutations";
+import { DELETE_WORKOUT } from "../utils/actions";
 
 const Workouts = () => {
-  const [state] = useStoreContext();
-  // console.log(state.user);
+  const [state, dispatch] = useStoreContext();
+
+  const [deleteWorkoutFromUser] = useMutation(DELETE_WORKOUT_MUTATION);
+
+  const deleteWorkoutHandler = (id) => {
+    dispatch({
+      type: DELETE_WORKOUT,
+      id: id,
+    });
+    deleteWorkoutFromUser({
+      variables: {
+        userId: state.user._id,
+        workoutId: id,
+      },
+    });
+  };
+
   return (
     <>
       <div className="cards">
         <h3 className="card-title">Past Workouts</h3>
         {state.user && state.user.workouts ? (
-          <div>
+          <div className="ml-5">
             {state.user.workouts.map((workout) => (
               <div key={workout._id}>
-                <p className="text-decoration-line: underline">
-                  Workout: {workout.workoutTitle}
+                <p className="font-bold text-lg">
+                  Workout:{" "}
+                  <span className="font-medium">
+                    {workout.workoutTitle}
+                    <button onClick={() => deleteWorkoutHandler(workout._id)}>
+                      <TrashIcon className="h-5 w-5" />
+                    </button>
+                  </span>
                 </p>
-                <span>Date: {formatDate(workout.day)}</span>
+                <span>{formatDate(workout.day)}</span>
                 <details className="ml-2.5">
                   <summary>Workout Details</summary>
                   {workout.exercises.map((exercise) => (
@@ -27,11 +49,17 @@ const Workouts = () => {
                       <p>{exercise.exerciseName}</p>
                       <details className="ml-2.5">
                         <summary>Exercise Details</summary>
-                        <p>Distance: {exercise.distance} miles</p>
-                        <p>Duration: {exercise.duration} minutes</p>
-                        <p>Weight: {exercise.weight} lbs</p>
-                        <p>Sets: {exercise.sets} X</p>
-                        <p>Reps: {exercise.reps} X</p>
+                        {exercise.distance && (
+                          <p>Distance: {exercise.distance} mi</p>
+                        )}
+                        {exercise.duration && (
+                          <p>Duration: {exercise.duration} mins</p>
+                        )}
+                        {exercise.weight && (
+                          <p>Weight: {exercise.weight} lbs</p>
+                        )}
+                        {exercise.sets && <p>Sets: {exercise.sets}x</p>}
+                        {exercise.reps && <p>Reps: {exercise.reps}x</p>}
                       </details>
                     </div>
                   ))}

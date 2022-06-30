@@ -31,9 +31,8 @@ const Today = () => {
       });
       //console.log("DATA " + data);
     }
-
   }, [data, loading, dispatch]);
- 
+
   const handleTitleChange = (event) => {
     const { name, value } = event.target;
     setTitleInput({
@@ -63,7 +62,7 @@ const Today = () => {
     <>
       <div className="cards">
         <h3 className="card-title">Today's Workout</h3>
-        <div>
+        <div className="mx-5">
           <input
             ref={newWorkTitle}
             onChange={handleTitleChange}
@@ -78,7 +77,7 @@ const Today = () => {
             Save Workout
           </button>
         </div>
-        <div>
+        <div className="mx-5 mt-3">
           {state?.user?.workouts.length > 0 && (
             <div>
               {/* <div>Workout Name: {state.user.workouts[0].workoutTitle}</div> */}
