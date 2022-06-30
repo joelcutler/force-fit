@@ -43,10 +43,11 @@ export const reducer = (state, action) => {
         user: {
           ...state.user,
           workouts: [
-            ...state.user.workouts.filter(
-              (workout) => workout._id !== action.user.data.addExerciseToWorkout
-            ),
-            action.user.data.addExerciseToWorkout,
+            ...state.user.workouts.map((workout) => {
+              if (workout._id === action.workoutId) {
+                workout.exercises = action.exercises;
+              }
+            }),
           ],
         },
       };
