@@ -8,7 +8,7 @@ body {
     "Lucida Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(../src/assets/galaxy5.png);
+  background-image: url('./assets/hyperspace.jpg');
   background-size: cover;
   background-attachment: fixed;
   width: auto;
@@ -130,7 +130,10 @@ code {
   .headerimg {
     width: 60%;
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> a35b7d6b8aceb66542455ae2509c2db0186117d3
 }
 
 .width{
@@ -141,5 +144,20 @@ code {
   margin: auto;
   width: auto;
   width: 500px;
+<<<<<<< HEAD
+}
 
+.notLogged {
+  background-image: url('./assets/deathStar.jpg');
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.notLogged p {
+  color: white;
+  text-shadow: 2px 2px black;
+=======
+
+>>>>>>> a35b7d6b8aceb66542455ae2509c2db0186117d3
 }

@@ -38,8 +38,9 @@ const Home = () => {
     );
   }
   return (
-    <div className="w-full flex justify-around m-5">
-      <a href="/login" className="text-white p-5 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br">
+    <div className="notLogged w-1/2 flex justify-around m-auto bg-white flex flex-col p-5 py-28 mt-10 rounded-xl">
+      <p className=" w-full text-center text-3xl">Oh no! You are not Logged In!</p>
+      <a href="/login" className="text-white text-center text-lg w-1/2 p-5 rounded-xl bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 hover:bg-gradient-to-br m-auto mt-8">
         Click here to go to login page
       </a>
     </div>
